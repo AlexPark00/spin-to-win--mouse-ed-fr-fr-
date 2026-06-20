@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 1400;
+@export var speed = 800;
 @export var maxHP = 100;
 @export var player:RigidBody2D;
 @export var healthBarForeground:Sprite2D;

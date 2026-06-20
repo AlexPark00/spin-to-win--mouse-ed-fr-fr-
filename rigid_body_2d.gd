@@ -2,11 +2,10 @@ extends RigidBody2D
 
 @export var maxHP = 100;
 var hp:float;
-@export var speed:int = 50;
-@export var angularSpeed:int = 1600;
-@export var maxSpeed:int = 1000;
+@export var speed:int = 20;
+@export var angularSpeed:int = 200;
+@export var maxSpeed:int = 800;
 @export var damage:int = 20;
-@export var healthBarForeground:Sprite2D;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,7 +21,6 @@ func _physics_process(delta: float) -> void:
 func deal_damage(damage:int):
 	print("damaged");
 	hp -= damage;
-	healthBarForeground.scale.x = hp/maxHP;
 	if hp <= 0:
 		print("dead");
 
