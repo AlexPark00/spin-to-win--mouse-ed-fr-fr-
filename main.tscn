@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://pfb3jnissrd5" path="res://scripts/camera_2d.gd" id="7_272bh"]
 [ext_resource type="Theme" uid="uid://bvoedy6niva4k" path="res://main_theme.tres" id="8_5vw27"]
 [ext_resource type="Script" uid="uid://vti45e2u4mvw" path="res://pause.gd" id="8_kek77"]
+[ext_resource type="Script" uid="uid://brclol0jxty2p" path="res://mini_map.gd" id="10_4c57u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(10.606636, 63.639587)
@@ -19,7 +20,7 @@ radius = 16.76308
 [node name="Node2D" type="Node2D" unique_id=764401362]
 texture_filter = 1
 
-[node name="GameManager" type="Node" parent="." unique_id=730957163]
+[node name="GameManager" type="Node" parent="." unique_id=730957163 groups=["game_manager"]]
 process_mode = 3
 script = ExtResource("1_7mycd")
 
@@ -125,6 +126,49 @@ text = "Continue"
 layout_mode = 2
 theme = ExtResource("8_5vw27")
 text = "Main menu"
+
+[node name="MiniMap" type="Control" parent="CanvasLayer/Control/Pause" unique_id=64775490]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("10_4c57u")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Pause/MiniMap" unique_id=86320068]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -132.0
+offset_top = -132.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/Control/Pause/MiniMap" unique_id=1979856652]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -96.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/Control/Pause/MiniMap/SubViewportContainer" unique_id=1823328120]
+handle_input_locally = false
+size = Vector2i(128, 128)
+render_target_update_mode = 0
+
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer/Control/Pause/MiniMap/SubViewportContainer/SubViewport" unique_id=707991258]
+zoom = Vector2(0.1, 0.1)
 
 [connection signal="body_entered" from="Player/Sword/Area2D" to="Player/Sword" method="_on_area_2d_body_entered"]
 [connection signal="pressed" from="CanvasLayer/Control/Pause/ButtonContainer/Continue" to="CanvasLayer/Control/Pause" method="_on_continue_pressed"]

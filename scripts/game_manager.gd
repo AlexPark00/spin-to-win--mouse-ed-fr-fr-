@@ -13,6 +13,7 @@ func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player");
 	camera = get_tree().get_first_node_in_group("camera");
 	_load_area(startingArea);
+	
 
 func _next_area() -> void:
 	currentArea += 1;
@@ -32,3 +33,7 @@ func _load_area(area:int) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func restart_current_area() -> void:
+	player.reset_hp();
+	_load_area(currentArea);
