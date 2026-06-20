@@ -5,10 +5,13 @@ var startingArea = 1;
 var currentArea = startingArea;
 var areaContainer;
 var player;
+var camera;
+@onready var pauseMenu = $"../CanvasLayer/Control/Pause";
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	areaContainer = get_tree().get_first_node_in_group("area_container");
 	player = get_tree().get_first_node_in_group("player");
+	camera = get_tree().get_first_node_in_group("camera");
 	_load_area(startingArea);
 
 func _next_area() -> void:
@@ -24,6 +27,7 @@ func _load_area(area:int) -> void:
 	areaContainer.add_child(instance);
 	var playerSpawnpoint:Node2D = get_tree().get_first_node_in_group("spawn_point");
 	player.teleport_to(playerSpawnpoint.position);
+	camera.teleport_to(playerSpawnpoint.position);
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

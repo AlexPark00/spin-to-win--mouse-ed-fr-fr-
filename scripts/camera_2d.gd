@@ -11,3 +11,6 @@ const FOLLOW_SPEED = 200.0
 func _process(delta):
 	var weight = 1 - exp(-FOLLOW_SPEED * delta);
 	position = position.lerp(target.position, weight);
+
+func teleport_to(point:Vector2):
+	position = point;

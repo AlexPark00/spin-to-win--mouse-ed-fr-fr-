@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+var isActive:bool = false;
 @export var speed = 400;
 @export var maxHP = 100;
 @export var dps = 10;
@@ -32,7 +33,7 @@ func set_movement_target(movement_target: Vector2):
 	navigation_agent.target_position = movement_target
 
 func _physics_process(delta):
-	if navigation_agent.is_navigation_finished():
+	if navigation_agent.is_navigation_finished() or !isActive:
 		return
 	actor_setup.call_deferred()
 	var current_agent_position: Vector2 = global_position
@@ -66,3 +67,8 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func _on_timer_timeout() -> void:
 	if is_player_inside:
 		player.deal_damage(dps);
+
+
+func _on_wake_up_area_body_entered(body: Node2D) -> void:
+	if body != self:
+		isActive = true;

@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://c8ym1oe8whovg" path="res://scripts/sword.gd" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://ocu5l35r1h5y" path="res://healthbar.tscn" id="7_5vw27"]
 [ext_resource type="Script" uid="uid://pfb3jnissrd5" path="res://scripts/camera_2d.gd" id="7_272bh"]
+[ext_resource type="Theme" uid="uid://bvoedy6niva4k" path="res://main_theme.tres" id="8_5vw27"]
+[ext_resource type="Script" uid="uid://vti45e2u4mvw" path="res://pause.gd" id="8_kek77"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(10.606636, 63.639587)
@@ -18,6 +20,7 @@ radius = 16.76308
 texture_filter = 1
 
 [node name="GameManager" type="Node" parent="." unique_id=730957163]
+process_mode = 3
 script = ExtResource("1_7mycd")
 
 [node name="Area" type="Node2D" parent="." unique_id=1829154792 groups=["area_container"]]
@@ -54,7 +57,7 @@ texture = ExtResource("3_7mycd")
 rotation = 1.2217305
 shape = SubResource("CircleShape2D_1bvp3")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1838958213 node_paths=PackedStringArray("target")]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1838958213 node_paths=PackedStringArray("target") groups=["camera"]]
 script = ExtResource("7_272bh")
 target = NodePath("../Player")
 
@@ -72,4 +75,57 @@ grow_vertical = 2
 layout_mode = 1
 target = NodePath("../../../Player")
 
+[node name="Pause" type="ColorRect" parent="CanvasLayer/Control" unique_id=1831167079]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.25882354)
+script = ExtResource("8_kek77")
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Pause" unique_id=197228372]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -39.0
+offset_top = 32.0
+offset_right = 39.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme = ExtResource("8_5vw27")
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text = "Pause"
+
+[node name="ButtonContainer" type="VBoxContainer" parent="CanvasLayer/Control/Pause" unique_id=1539100374]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -33.0
+offset_right = 48.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Continue" type="Button" parent="CanvasLayer/Control/Pause/ButtonContainer" unique_id=781293348]
+layout_mode = 2
+theme = ExtResource("8_5vw27")
+text = "Continue"
+
+[node name="MainMenu" type="Button" parent="CanvasLayer/Control/Pause/ButtonContainer" unique_id=1204725039]
+layout_mode = 2
+theme = ExtResource("8_5vw27")
+text = "Main menu"
+
 [connection signal="body_entered" from="Player/Sword/Area2D" to="Player/Sword" method="_on_area_2d_body_entered"]
+[connection signal="pressed" from="CanvasLayer/Control/Pause/ButtonContainer/Continue" to="CanvasLayer/Control/Pause" method="_on_continue_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Pause/ButtonContainer/MainMenu" to="CanvasLayer/Control/Pause" method="_on_main_menu_pressed"]
