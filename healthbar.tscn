@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ocu5l35r1h5y"]
 
-[ext_resource type="Script" uid="uid://dm2g6syk38qdi" path="res://healthbar.gd" id="1_vii3e"]
+[ext_resource type="Script" uid="uid://dm2g6syk38qdi" path="res://scripts/healthbar.gd" id="1_vii3e"]
 [ext_resource type="FontFile" uid="uid://dswwfv4asta2f" path="res://fonts/KiwiSoda.ttf" id="2_bq16f"]
 
 [node name="Healthbar" type="Control" unique_id=1521435540 node_paths=PackedStringArray("target", "percentLabel")]

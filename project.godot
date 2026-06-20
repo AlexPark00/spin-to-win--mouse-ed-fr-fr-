@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="spin to win (mouse ed fr fr)"
-run/main_scene="res://main.tscn"
+run/main_scene="uid://bl17h2ue2wjd8"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 

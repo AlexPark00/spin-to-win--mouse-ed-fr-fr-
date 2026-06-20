@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://cdnp67voh6i0p"]
 
-[ext_resource type="Script" uid="uid://euhvn8oned0v" path="res://rigid_body_2d.gd" id="1_0xm2m"]
-[ext_resource type="Script" uid="uid://hsehcn5c3pgx" path="res://game_manager.gd" id="1_7mycd"]
+[ext_resource type="Script" uid="uid://euhvn8oned0v" path="res://scripts/rigid_body_2d.gd" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://hsehcn5c3pgx" path="res://scripts/game_manager.gd" id="1_7mycd"]
 [ext_resource type="Texture2D" uid="uid://cbdorsyjhf6wy" path="res://goose.png" id="3_7mycd"]
 [ext_resource type="Texture2D" uid="uid://rvlj3cb6enmw" path="res://katana.png" id="3_272bh"]
-[ext_resource type="Script" uid="uid://c8ym1oe8whovg" path="res://sword.gd" id="3_lquwl"]
+[ext_resource type="Script" uid="uid://c8ym1oe8whovg" path="res://scripts/sword.gd" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://ocu5l35r1h5y" path="res://healthbar.tscn" id="7_5vw27"]
-[ext_resource type="Script" uid="uid://pfb3jnissrd5" path="res://camera_2d.gd" id="7_272bh"]
+[ext_resource type="Script" uid="uid://pfb3jnissrd5" path="res://scripts/camera_2d.gd" id="7_272bh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(10.606636, 63.639587)
