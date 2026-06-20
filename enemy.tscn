@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://dqawqu4c6pmsd"]
 
 [ext_resource type="Script" uid="uid://bn74b3o5uhnqk" path="res://scripts/enemy.gd" id="1_4gyqm"]
-[ext_resource type="Texture2D" uid="uid://cs502ushn0ht2" path="res://enemy.png" id="2_qi2p4"]
+[ext_resource type="Texture2D" uid="uid://cd7gai1wqv6c2" path="res://enemy.png" id="2_qi2p4"]
 [ext_resource type="PackedScene" uid="uid://ocu5l35r1h5y" path="res://healthbar.tscn" id="3_qi2p4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(12, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
-size = Vector2(32, 32)
+size = Vector2(24, 24)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qi2p4"]
 radius = 200.0

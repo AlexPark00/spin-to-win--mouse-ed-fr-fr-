@@ -70,5 +70,5 @@ func _on_timer_timeout() -> void:
 
 
 func _on_wake_up_area_body_entered(body: Node2D) -> void:
-	if body != self:
+	if body == player:
 		isActive = true;

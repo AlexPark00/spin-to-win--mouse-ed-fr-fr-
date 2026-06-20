@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbdorsyjhf6wy"
-path="res://.godot/imported/goose.png-d9ab0b4f827308db6beb8125dcd4fdea.ctex"
+uid="uid://bfqv2bsxuv7cv"
+path="res://.godot/imported/duck.png-b41cfd9d5b46cdf9331a4d2a71452a35.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://goose.png"
-dest_files=["res://.godot/imported/goose.png-d9ab0b4f827308db6beb8125dcd4fdea.ctex"]
+source_file="res://duck.png"
+dest_files=["res://.godot/imported/duck.png-b41cfd9d5b46cdf9331a4d2a71452a35.ctex"]
 
 [params]
 

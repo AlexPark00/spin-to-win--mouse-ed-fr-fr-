@@ -7,6 +7,12 @@ var hp:float;
 @export var maxSpeed:int = 800;
 @export var damage:int = 20;
 var gameManager;
+var canMoveToNextArea:bool = false;
+
+# hold time for transitioning to next area in seconds
+@onready var holdTimeLabel = $"../CanvasLayer/Control/HoldTimeLabel";
+var holdTime:float = 10;
+var elapsedHoldTime:float = 0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,6 +25,15 @@ func _physics_process(delta: float) -> void:
 	apply_torque(get_angle_to(get_global_mouse_position())*angularSpeed);
 	if linear_velocity.length() > maxSpeed:
 		linear_velocity = linear_velocity.normalized() * maxSpeed
+	
+	if Input.is_action_pressed("do") and canMoveToNextArea:
+		elapsedHoldTime += delta;
+	else:
+		elapsedHoldTime = 0;
+	
+	if elapsedHoldTime > holdTime:
+		gameManager._next_area()
+	holdTimeLabel.text = str(round(elapsedHoldTime*10)/10);
 
 func deal_damage(damage:int):
 	hp -= damage;
@@ -39,3 +54,15 @@ func teleport_to(point:Vector2):
 
 func reset_hp() -> void:
 	hp = maxHP;
+
+
+
+func _on_collision_check_area_entered(area: Area2D) -> void:
+	if area.is_in_group("next_area_trigger"):
+		canMoveToNextArea = true;
+		holdTimeLabel.visible = true;
+
+func _on_collision_check_area_exited(area: Area2D) -> void:
+	if area.is_in_group("next_area_trigger"):
+		canMoveToNextArea = false;
+		holdTimeLabel.visible = false;
