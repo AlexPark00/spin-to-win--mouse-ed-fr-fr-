@@ -2,6 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://bvoedy6niva4k" path="res://main_theme.tres" id="1_06t4h"]
 [ext_resource type="Script" uid="uid://dgk4duu4e60o0" path="res://scripts/button_container.gd" id="2_7vrkn"]
+[ext_resource type="PackedScene" uid="uid://cnpqb2065kctt" path="res://transition.tscn" id="3_fu7sn"]
 
 [node name="Control" type="Control" unique_id=407233532]
 layout_mode = 3
@@ -163,6 +164,14 @@ theme_override_font_sizes/font_size = 32
 text = "There is
 nothing to
 see yet"
+
+[node name="Transition" parent="." unique_id=630567109 instance=ExtResource("3_fu7sn")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [connection signal="pressed" from="ColorRect/ButtonContainer/Play" to="ColorRect/ButtonContainer" method="_on_play_pressed"]
 [connection signal="pressed" from="ColorRect/ButtonContainer/Settings" to="ColorRect/ButtonContainer" method="_on_settings_pressed"]
