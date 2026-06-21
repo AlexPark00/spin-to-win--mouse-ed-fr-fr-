@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://euhvn8oned0v" path="res://scripts/rigid_body_2d.gd" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://hsehcn5c3pgx" path="res://scripts/game_manager.gd" id="1_7mycd"]
-[ext_resource type="Texture2D" uid="uid://cpyyd2j7ji814" path="res://katana.png" id="3_272bh"]
+[ext_resource type="Texture2D" uid="uid://cpyyd2j7ji814" path="res://sprites/katana.png" id="3_272bh"]
 [ext_resource type="Script" uid="uid://c8ym1oe8whovg" path="res://scripts/sword.gd" id="3_lquwl"]
-[ext_resource type="Texture2D" uid="uid://b38nycvgtikvq" path="res://duck.png" id="5_4c57u"]
+[ext_resource type="Texture2D" uid="uid://b38nycvgtikvq" path="res://sprites/duck.png" id="5_4c57u"]
 [ext_resource type="PackedScene" uid="uid://ocu5l35r1h5y" path="res://healthbar.tscn" id="7_5vw27"]
 [ext_resource type="Script" uid="uid://pfb3jnissrd5" path="res://scripts/camera_2d.gd" id="7_272bh"]
 [ext_resource type="Theme" uid="uid://bvoedy6niva4k" path="res://main_theme.tres" id="8_5vw27"]

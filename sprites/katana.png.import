@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cd7gai1wqv6c2"
-path="res://.godot/imported/enemy.png-f7d9f81714867a24a08e299bb600e611.ctex"
+uid="uid://cpyyd2j7ji814"
+path="res://.godot/imported/katana.png-d052613883ae5171b8b15684ac4bbbdc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemy.png"
-dest_files=["res://.godot/imported/enemy.png-f7d9f81714867a24a08e299bb600e611.ctex"]
+source_file="res://sprites/katana.png"
+dest_files=["res://.godot/imported/katana.png-d052613883ae5171b8b15684ac4bbbdc.ctex"]
 
 [params]
 

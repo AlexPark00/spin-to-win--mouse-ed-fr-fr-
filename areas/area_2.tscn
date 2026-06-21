@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://8ptn5d3t4s2s"]
 
 [ext_resource type="TileSet" uid="uid://c2lan0qwkle68" path="res://tilemap/new_tile_set.tres" id="1_jvuwh"]
-[ext_resource type="Texture2D" uid="uid://blpamuismnbv5" path="res://icon.svg" id="2_aymld"]
+[ext_resource type="Texture2D" uid="uid://blpamuismnbv5" path="res://sprites/icon.svg" id="2_aymld"]
 [ext_resource type="PackedScene" uid="uid://dqawqu4c6pmsd" path="res://enemy.tscn" id="3_jmxgp"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1prma"]

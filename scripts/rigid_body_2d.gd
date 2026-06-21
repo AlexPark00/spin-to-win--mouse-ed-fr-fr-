@@ -71,6 +71,11 @@ func teleport_to(point:Vector2):
 func reset_hp() -> void:
 	hp = maxHP;
 
+func heal_hp(amt:float) -> void:
+	if (hp + amt) > maxHP:
+		reset_hp();
+	else:
+		hp += amt;
 
 func _on_collision_check_area_entered(area: Area2D) -> void:
 	if area.is_in_group("next_area_trigger"):

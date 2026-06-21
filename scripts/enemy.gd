@@ -4,11 +4,13 @@ var isActive:bool = false;
 @export var speed = 400;
 @export var maxHP = 100;
 @export var dps = 10;
+@export var powerOfHpRestoration = 10;
 var player:RigidBody2D;
 var target = position;
 var hp:float;
 var is_player_inside:bool = false;
-@onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
+@onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D;
+var heal_node = preload("res://heal.tscn");
 
 func _ready():
 	# These values need to be adjusted for the actor's speed
@@ -57,7 +59,15 @@ func is_active() -> bool:
 	return isActive;
 
 func _kms():
-	self.queue_free()
+	if randi()%100+1 <= 50:
+		_spawn_heal();
+	self.queue_free();
+
+func _spawn_heal():
+	var node:Node2D = heal_node.instantiate() as Node2D;
+	node.global_position = global_position;
+	node.powerOfHpRestoration = powerOfHpRestoration;
+	get_parent().add_child(node);
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body == player:

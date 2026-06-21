@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://becoakefmq550"]
+
+[ext_resource type="Script" uid="uid://cmej1n0etjlyb" path="res://scripts/heal.gd" id="1_fjnwt"]
+[ext_resource type="Texture2D" uid="uid://cjqpfobujfweq" path="res://sprites/heal.png" id="2_g60by"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vf7b2"]
+radius = 6.0
+
+[node name="Heal" type="Node2D" unique_id=993527082]
+script = ExtResource("1_fjnwt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=958131985]
+texture_filter = 1
+texture = ExtResource("2_g60by")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1425558100]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=102278576]
+shape = SubResource("CircleShape2D_vf7b2")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
