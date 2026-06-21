@@ -2,7 +2,36 @@
 
 [ext_resource type="Theme" uid="uid://bvoedy6niva4k" path="res://main_theme.tres" id="1_06t4h"]
 [ext_resource type="Script" uid="uid://dgk4duu4e60o0" path="res://scripts/button_container.gd" id="2_7vrkn"]
-[ext_resource type="PackedScene" uid="uid://cnpqb2065kctt" path="res://transition.tscn" id="3_fu7sn"]
+[ext_resource type="Shader" uid="uid://31cnn745tnt7" path="res://transition.gdshader" id="3_jix8l"]
+[ext_resource type="Script" uid="uid://c5x8dkylj7dvr" path="res://transition.gd" id="4_glbon"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nlkkf"]
+shader = ExtResource("3_jix8l")
+shader_parameter/use_sprite_alpha = true
+shader_parameter/use_transition_texture = false
+shader_parameter/transition_type = 0
+shader_parameter/position = Vector2(0, 0)
+shader_parameter/invert = true
+shader_parameter/grid_size = Vector2(60, 0)
+shader_parameter/rotation_angle = 0.0
+shader_parameter/global_x_mirror = false
+shader_parameter/global_y_mirror = false
+shader_parameter/local_x_mirror = false
+shader_parameter/local_y_mirror = false
+shader_parameter/stagger = Vector2(0, 0)
+shader_parameter/cumulative_stagger_flip = false
+shader_parameter/cumulative_stagger = Vector2(0, 0)
+shader_parameter/stagger_frequency = Vector2i(2, 2)
+shader_parameter/flip_frequency = Vector2i(1, 1)
+shader_parameter/basic_feather = 0.0
+shader_parameter/use_mask_size = false
+shader_parameter/mask_size = Vector2(100, 100)
+shader_parameter/edges = 6
+shader_parameter/shape_feather = 0.1
+shader_parameter/sectors = 1
+shader_parameter/clock_feather = 0.0
+shader_parameter/progress = 2.5
+shader_parameter/progress_bias = Vector2(0, 0)
 
 [node name="Control" type="Control" unique_id=407233532]
 layout_mode = 3
@@ -165,13 +194,17 @@ text = "There is
 nothing to
 see yet"
 
-[node name="Transition" parent="." unique_id=630567109 instance=ExtResource("3_fu7sn")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+[node name="Transition" type="ColorRect" parent="." unique_id=417152782 groups=["transition"]]
+material = SubResource("ShaderMaterial_nlkkf")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("4_glbon")
 
 [connection signal="pressed" from="ColorRect/ButtonContainer/Play" to="ColorRect/ButtonContainer" method="_on_play_pressed"]
 [connection signal="pressed" from="ColorRect/ButtonContainer/Settings" to="ColorRect/ButtonContainer" method="_on_settings_pressed"]

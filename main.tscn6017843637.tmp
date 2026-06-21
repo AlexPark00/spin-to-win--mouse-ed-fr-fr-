@@ -50,7 +50,6 @@ shader_parameter/progress = 2.5
 shader_parameter/progress_bias = Vector2(0, 0)
 
 [node name="Node2D" type="Node2D" unique_id=764401362]
-process_mode = 3
 texture_filter = 1
 
 [node name="GameManager" type="Node" parent="." unique_id=730957163 groups=["game_manager"]]
@@ -58,10 +57,8 @@ process_mode = 3
 script = ExtResource("1_7mycd")
 
 [node name="Area" type="Node2D" parent="." unique_id=1829154792 groups=["area_container"]]
-process_mode = 1
 
 [node name="Player" type="RigidBody2D" parent="." unique_id=1089079350 groups=["player"]]
-process_mode = 1
 position = Vector2(595, 241)
 mass = 0.001
 gravity_scale = 0.0
@@ -98,15 +95,12 @@ shape = SubResource("CircleShape2D_4c57u")
 debug_color = Color(0.95147854, 2.5027991e-06, 0.5658839, 0.41960785)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1838958213 node_paths=PackedStringArray("target") groups=["camera"]]
-process_mode = 1
 script = ExtResource("7_272bh")
 target = NodePath("../Player")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1431106046]
-process_mode = 3
 
 [node name="Control" type="Control" parent="CanvasLayer" unique_id=160988111]
-process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -115,12 +109,10 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Healthbar" parent="CanvasLayer/Control" unique_id=1521435540 node_paths=PackedStringArray("target") instance=ExtResource("7_5vw27")]
-process_mode = 1
 layout_mode = 1
 target = NodePath("../../../Player")
 
 [node name="MiniMap" type="Control" parent="CanvasLayer/Control" unique_id=64775490]
-process_mode = 1
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -164,24 +156,6 @@ render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer/Control/MiniMap/SubViewportContainer/SubViewport" unique_id=707991258]
 zoom = Vector2(0.1, 0.1)
-
-[node name="HoldTimeLabel" type="Label" parent="CanvasLayer/Control" unique_id=1219862312]
-process_mode = 1
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 8.0
-offset_top = -35.0
-offset_right = 48.0
-offset_bottom = -19.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("8_5vw27")
-text = "10"
 
 [node name="Transition" type="ColorRect" parent="CanvasLayer/Control" unique_id=549200282 groups=["transition"]]
 process_mode = 3
@@ -246,6 +220,23 @@ text = "Continue"
 layout_mode = 2
 theme = ExtResource("8_5vw27")
 text = "Main menu"
+
+[node name="HoldTimeLabel" type="Label" parent="CanvasLayer/Control" unique_id=1219862312]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -35.0
+offset_right = 48.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_5vw27")
+text = "10"
 
 [connection signal="body_entered" from="Player/Sword/Sword/Area2D" to="Player/Sword/Sword" method="_on_area_2d_body_entered"]
 [connection signal="area_entered" from="Player/CollisionCheck" to="Player" method="_on_collision_check_area_entered"]

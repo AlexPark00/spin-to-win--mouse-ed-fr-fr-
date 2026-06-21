@@ -1,10 +1,8 @@
 extends ColorRect
 
-
-# Called when the node enters the scene tree for the first time.
+var transition;
 func _ready() -> void:
-	pass # Replace with function body.
-
+	transition = get_tree().get_first_node_in_group("transition");
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -28,4 +26,6 @@ func _on_continue_pressed() -> void:
 
 func _on_main_menu_pressed() -> void:
 	toggle_pause();
+	transition.toggle_transition();
+	await transition.done_transitioning;
 	get_tree().change_scene_to_file("res://main_menu.tscn");
