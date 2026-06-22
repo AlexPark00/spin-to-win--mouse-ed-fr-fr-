@@ -9,6 +9,7 @@ extends Control
 
 @onready var dashCooldownButton = $BG/HBoxContainer/VBoxContainer/HBoxContainer/DashCooldown/DashCooldown
 @onready var dashCooldownLabel = $BG/HBoxContainer/VBoxContainer/HBoxContainer/DashCooldown/Amount
+@export var dashCooldownUpgradePower:float = 0.1;
 
 @onready var katanaLengthButton = $BG/HBoxContainer/VBoxContainer/HBoxContainer/KatanaLength/KatanaLength
 @onready var katanaLengthLabel = $BG/HBoxContainer/VBoxContainer/HBoxContainer/KatanaLength/Amount
@@ -17,9 +18,6 @@ extends Control
 @onready var damageButton = $BG/HBoxContainer/VBoxContainer/HBoxContainer/Damage/Damage
 @onready var damageLabel = $BG/HBoxContainer/VBoxContainer/HBoxContainer/Damage/Amount
 @export var damageUpgradePower:float = 2;
-
-@onready var spinAttackButton = $BG/HBoxContainer/VBoxContainer/HBoxContainer/SpinAttack/SpinAttack
-@onready var spinAttackLabel = $BG/HBoxContainer/VBoxContainer/HBoxContainer/SpinAttack/Amount
 
 @onready var totalPointsNumberLabel = $BG/HBoxContainer/VBoxContainer/TotalPointsHBox/num
 var gameManager
@@ -45,19 +43,16 @@ func _process(delta: float) -> void:
 	dashCooldownLabel.text = str(dashCooldownCurrLvl);
 	katanaLengthLabel.text = str(katanaLengthCurrLvl);
 	damageLabel.text = str(damageCurrLvl);
-	spinAttackLabel.text = str(spinAttackCurrLvl);
 	if freeUpgradePoints == 0:
 		maxHpButton.disabled = true;
 		dashCooldownButton.disabled = true;
 		katanaLengthButton.disabled = true;
 		damageButton.disabled = true;
-		spinAttackButton.disabled = true;
 	else:
 		maxHpButton.disabled = false;
 		dashCooldownButton.disabled = false;
 		katanaLengthButton.disabled = false;
 		damageButton.disabled = false;
-		spinAttackButton.disabled = false;
 
 func _on_next_level_pressed() -> void:
 	_apply_upgrades();
@@ -72,7 +67,6 @@ func _on_reset_pressed() -> void:
 	dashCooldownCurrLvl = 0;
 	katanaLengthCurrLvl = 0;
 	damageCurrLvl = 0;
-	spinAttackCurrLvl = 0;
 	freeUpgradePoints = totalUpgradePoints;
 
 var maxHpCurrLvl:int = 0;
@@ -99,17 +93,13 @@ func _on_damage_pressed() -> void:
 		freeUpgradePoints -= 1;
 		damageCurrLvl += 1;
 
-var spinAttackCurrLvl:int = 0;
-func _on_spin_attack_pressed() -> void:
-	if freeUpgradePoints > 0:
-		freeUpgradePoints -= 1;
-		spinAttackCurrLvl += 1;
 
 func _apply_upgrades() -> void:
 	player.maxHP = player.originalMaxHP + maxHpUpgradePower * maxHpCurrLvl;
 	player.reset_hp();
 	
+	player.dashCooldown = player.originalDashCooldown - dashCooldownUpgradePower * dashCooldownCurrLvl;
+	
 	$"../../../Player/Sword/InnerOrigin".scale.x = 1.0 + katanaLengthUpgradePower * katanaLengthCurrLvl;
 	
 	player.damage = player.originalDamage + damageUpgradePower * damageCurrLvl;
-	

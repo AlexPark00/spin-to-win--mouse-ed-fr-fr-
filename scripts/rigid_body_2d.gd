@@ -15,7 +15,8 @@ var canMoveToNextArea:bool = false;
 @onready var sword = $Sword;
 @onready var swordSprite = $Sword/InnerOrigin/Sword;
 
-@export var dashCooldown:float = 1.0;
+@export var originalDashCooldown:float = 2.0;
+var dashCooldown:float = originalDashCooldown;
 var dashCooldownRemaining:float = 0.0;
 @export var dashTime:float = 0.15;
 var dashTimeRemaining:float = 0.0;
@@ -90,12 +91,12 @@ func _physics_process(delta: float) -> void:
 		gameManager.finish_level();
 	holdTimeLabel.text = str(round((holdTime - elapsedHoldTime)*10)/10);
 
-func deal_damage(damage:int):
+func deal_damage(damage:float):
 	hp -= damage;
 	if hp <= 0:
 		gameManager.restart_current_area();
 
-func get_damage() -> int:
+func get_damage() -> float:
 	return damage;
 
 func get_hp() -> float:
