@@ -13,7 +13,7 @@ var canMoveToNextArea:bool = false;
 
 @onready var duckSprite = $Duck;
 @onready var sword = $Sword;
-@onready var swordSprite = $Sword/InnerOrigin/Sword;
+@onready var swordInnerOrigin = $Sword/InnerOrigin;
 
 @export var originalDashCooldown:float = 2.0;
 var dashCooldown:float = originalDashCooldown;
@@ -48,10 +48,10 @@ func _physics_process(delta: float) -> void:
 	var oldSwordAngle:float = sword.rotation_degrees;
 	sword.look_at(get_global_mouse_position());
 	var swordAngle:float = sword.rotation_degrees;
-	if (swordAngle - oldSwordAngle) < -0.1:
-		swordSprite.flip_h = false;
-	elif (swordAngle - oldSwordAngle) > 0.1:
-		swordSprite.flip_h = true;
+	if (swordAngle - oldSwordAngle) < -0.2:
+		swordInnerOrigin.scale.y = -1;
+	elif (swordAngle - oldSwordAngle) > 0.2:
+		swordInnerOrigin.scale.y = 1;
 		
 	# flipping duck depending on if katana is on the right or left side of the duck
 	if abs(sword.global_rotation_degrees) > 90:
@@ -126,3 +126,6 @@ func _on_collision_check_area_exited(area: Area2D) -> void:
 	if area.is_in_group("next_area_trigger"):
 		canMoveToNextArea = false;
 		holdTimeLabel.visible = false;
+
+func level_start_animation() -> void:
+	pass

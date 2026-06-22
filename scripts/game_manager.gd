@@ -9,6 +9,7 @@ var camera;
 var transition;
 @onready var pauseMenu = $"../CanvasLayer/Control/Pause";
 @onready var levelUpMenu = $"../CanvasLayer/Control/LevelUp"
+@onready var musicPlayer = $"../MusicPlayer"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	areaContainer = get_tree().get_first_node_in_group("area_container");
@@ -50,6 +51,7 @@ func restart_current_area() -> void:
 	player.reset_hp();
 
 func finish_level() -> void:
+	musicPlayer.stop();
 	await _next_area();
 	get_tree().paused = true;
 	levelUpMenu.visible = true;

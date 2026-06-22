@@ -20,6 +20,7 @@ extends Control
 @export var damageUpgradePower:float = 2;
 
 @onready var totalPointsNumberLabel = $BG/HBoxContainer/VBoxContainer/TotalPointsHBox/num
+@onready var musicPlayer = $"../../../MusicPlayer"
 var gameManager
 var transition
 var player
@@ -61,6 +62,7 @@ func _on_next_level_pressed() -> void:
 	visible = false;
 	get_tree().paused = false;
 	transition.toggle_transition();
+	musicPlayer.play();
 
 func _on_reset_pressed() -> void:
 	maxHpCurrLvl = 0;

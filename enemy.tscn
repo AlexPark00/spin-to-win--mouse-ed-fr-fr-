@@ -28,7 +28,6 @@ screen_margin = 16.0
 smoothing_speed = 100.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1462799679]
-modulate = Color(1, 0.16862746, 0.1764706, 1)
 texture = ExtResource("2_qi2p4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=656443659]

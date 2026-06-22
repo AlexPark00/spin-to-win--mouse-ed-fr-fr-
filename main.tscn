@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://euhvn8oned0v" path="res://scripts/rigid_body_2d.gd" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://hsehcn5c3pgx" path="res://scripts/game_manager.gd" id="1_7mycd"]
+[ext_resource type="AudioStream" uid="uid://blcccxvuep6yy" path="res://duckinja main theme (demo 1).mp3" id="1_074og"]
 [ext_resource type="Texture2D" uid="uid://cpyyd2j7ji814" path="res://sprites/katana.png" id="3_272bh"]
 [ext_resource type="Script" uid="uid://c8ym1oe8whovg" path="res://scripts/sword.gd" id="3_lquwl"]
 [ext_resource type="Texture2D" uid="uid://b38nycvgtikvq" path="res://sprites/duck.png" id="5_4c57u"]
@@ -18,8 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://dkj7rlx5dve7s" path="res://sprites/arrow1.png" id="12_yaehf"]
 [ext_resource type="Texture2D" uid="uid://cu6lvh0cw7di0" path="res://sprites/arrow2.png" id="13_074og"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
-size = Vector2(4, 48)
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_074og"]
+points = PackedVector2Array(7.83667, -7.7837524, -6.4544067, 15.470581, -5.7148438, 23.923584, 5.3623047, 4.4994507, 7.5636597, -2.7912292)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1bvp3"]
 radius = 12.083045
@@ -58,6 +59,11 @@ shader_parameter/progress_bias = Vector2(0, 0)
 process_mode = 3
 texture_filter = 1
 
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1063857024]
+stream = ExtResource("1_074og")
+autoplay = true
+bus = &"Music"
+
 [node name="GameManager" type="Node" parent="." unique_id=730957163 groups=["game_manager"]]
 process_mode = 3
 script = ExtResource("1_7mycd")
@@ -81,8 +87,8 @@ speed = 13
 position = Vector2(12, 0)
 
 [node name="Sword" type="Sprite2D" parent="Player/Sword/InnerOrigin" unique_id=1713654208]
-position = Vector2(24, 0)
-rotation = 1.5707964
+position = Vector2(22, -9)
+rotation = 0.87266463
 texture = ExtResource("3_272bh")
 script = ExtResource("3_lquwl")
 
@@ -90,7 +96,7 @@ script = ExtResource("3_lquwl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Sword/InnerOrigin/Sword/Area2D" unique_id=57417009]
 position = Vector2(0, 6.1035156e-05)
-shape = SubResource("RectangleShape2D_h2yge")
+shape = SubResource("ConvexPolygonShape2D_074og")
 debug_color = Color(0.22658393, 0.6385784, 0, 0.41960785)
 
 [node name="Duck" type="Sprite2D" parent="Player" unique_id=1156921978]
