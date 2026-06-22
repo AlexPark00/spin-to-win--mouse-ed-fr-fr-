@@ -13,7 +13,7 @@ var canMoveToNextArea:bool = false;
 
 @onready var duckSprite = $Duck;
 @onready var sword = $Sword;
-@onready var swordSprite = $Sword/Sword;
+@onready var swordSprite = $Sword/InnerOrigin/Sword;
 
 @export var dashCooldown:float = 1.0;
 var dashCooldownRemaining:float = 0.0;

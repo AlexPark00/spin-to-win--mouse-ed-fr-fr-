@@ -12,6 +12,7 @@ extends Control
 
 @onready var katanaLengthButton = $BG/HBoxContainer/VBoxContainer/HBoxContainer/KatanaLength/KatanaLength
 @onready var katanaLengthLabel = $BG/HBoxContainer/VBoxContainer/HBoxContainer/KatanaLength/Amount
+@export var katanaLengthUpgradePower:float = 0.1;
 
 @onready var damageButton = $BG/HBoxContainer/VBoxContainer/HBoxContainer/Damage/Damage
 @onready var damageLabel = $BG/HBoxContainer/VBoxContainer/HBoxContainer/Damage/Amount
@@ -108,4 +109,7 @@ func _apply_upgrades() -> void:
 	player.maxHP = player.originalMaxHP + maxHpUpgradePower * maxHpCurrLvl;
 	player.reset_hp();
 	
+	$"../../../Player/Sword/InnerOrigin".scale.x = 1.0 + katanaLengthUpgradePower * katanaLengthCurrLvl;
+	
 	player.damage = player.originalDamage + damageUpgradePower * damageCurrLvl;
+	

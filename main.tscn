@@ -77,15 +77,18 @@ speed = 13
 
 [node name="Sword" type="Node2D" parent="Player" unique_id=381591880]
 
-[node name="Sword" type="Sprite2D" parent="Player/Sword" unique_id=1713654208]
-position = Vector2(36, 0)
+[node name="InnerOrigin" type="Node2D" parent="Player/Sword" unique_id=719129034]
+position = Vector2(12, 0)
+
+[node name="Sword" type="Sprite2D" parent="Player/Sword/InnerOrigin" unique_id=1713654208]
+position = Vector2(24, 0)
 rotation = 1.5707964
 texture = ExtResource("3_272bh")
 script = ExtResource("3_lquwl")
 
-[node name="Area2D" type="Area2D" parent="Player/Sword/Sword" unique_id=1846394998]
+[node name="Area2D" type="Area2D" parent="Player/Sword/InnerOrigin/Sword" unique_id=1846394998]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Sword/Sword/Area2D" unique_id=57417009]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Sword/InnerOrigin/Sword/Area2D" unique_id=57417009]
 position = Vector2(0, 6.1035156e-05)
 shape = SubResource("RectangleShape2D_h2yge")
 debug_color = Color(0.22658393, 0.6385784, 0, 0.41960785)
@@ -394,7 +397,7 @@ layout_mode = 2
 theme = ExtResource("8_5vw27")
 text = "Main menu"
 
-[connection signal="body_entered" from="Player/Sword/Sword/Area2D" to="Player/Sword/Sword" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Player/Sword/InnerOrigin/Sword/Area2D" to="Player/Sword/InnerOrigin/Sword" method="_on_area_2d_body_entered"]
 [connection signal="area_entered" from="Player/CollisionCheck" to="Player" method="_on_collision_check_area_entered"]
 [connection signal="area_exited" from="Player/CollisionCheck" to="Player" method="_on_collision_check_area_exited"]
 [connection signal="pressed" from="CanvasLayer/Control/LevelUp/BG/HBoxContainer/VBoxContainer/HBoxContainer/MaxHP/MaxHP" to="CanvasLayer/Control/LevelUp" method="_on_max_hp_pressed"]
