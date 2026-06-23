@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cfm538o1tkqwe" path="res://sprites/marker.png" id="4_epg4t"]
 [ext_resource type="Script" uid="uid://cvrg85x0o0uj0" path="res://scripts/marker.gd" id="4_iifgy"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
-size = Vector2(12, 12)
+[sub_resource type="CircleShape2D" id="CircleShape2D_epg4t"]
+radius = 9.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
 size = Vector2(24, 24)
@@ -16,9 +16,9 @@ size = Vector2(24, 24)
 radius = 200.0
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1341150150 groups=["enemy"]]
+texture_filter = 1
 motion_mode = 1
 script = ExtResource("1_4gyqm")
-powerOfHpRestoration = 5
 
 [node name="Marker" type="Sprite2D" parent="." unique_id=1697046159]
 texture_filter = 1
@@ -31,7 +31,8 @@ smoothing_speed = 100.0
 texture = ExtResource("2_qi2p4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=656443659]
-shape = SubResource("RectangleShape2D_0xm2m")
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_epg4t")
 
 [node name="HitBox" type="Area2D" parent="." unique_id=569272496]
 linear_damp_space_override = 1
@@ -44,6 +45,7 @@ shape = SubResource("RectangleShape2D_4gyqm")
 autostart = true
 
 [node name="Healthbar" parent="." unique_id=1521435540 node_paths=PackedStringArray("target") instance=ExtResource("3_qi2p4")]
+z_index = 1
 offset_left = -37.0
 offset_top = -25.0
 offset_right = -37.0

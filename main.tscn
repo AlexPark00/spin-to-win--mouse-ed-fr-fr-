@@ -85,6 +85,7 @@ script = ExtResource("1_0xm2m")
 speed = 13
 
 [node name="Sword" type="Node2D" parent="Player" unique_id=381591880]
+z_index = 1
 
 [node name="InnerOrigin" type="Node2D" parent="Player/Sword" unique_id=719129034]
 position = Vector2(12, 0)
@@ -116,6 +117,7 @@ debug_color = Color(0.95147854, 2.5027991e-06, 0.5658839, 0.41960785)
 
 [node name="DashCooldownBar" type="TextureProgressBar" parent="Player" unique_id=2673482]
 modulate = Color(1, 1, 1, 0)
+z_index = 1
 texture_filter = 1
 offset_left = -23.0
 offset_top = -21.0
@@ -127,6 +129,7 @@ texture_under = ExtResource("6_ycdy4")
 texture_progress = ExtResource("7_w48qg")
 
 [node name="LevelLabel" type="Label" parent="Player" unique_id=1791700751]
+z_index = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

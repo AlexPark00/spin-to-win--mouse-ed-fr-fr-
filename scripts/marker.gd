@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 	var target_display_rotation: float
 	
 	if screen_inset_rectangle.has_point(screen_coordinates):
-		target_display_position = target_display_position + on_screen_offset
+		target_display_position = target_global_position + on_screen_offset
 		target_display_rotation = 0.0
 	else:
 		var clamped_x = clamp(screen_coordinates.x, screen_margin, viewport_dimensions.x - screen_margin)

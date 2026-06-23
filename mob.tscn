@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://bxdbba4iay6ps"]
+
+[ext_resource type="Script" uid="uid://c6nadxqds5kwq" path="res://mob.gd" id="1_nokgg"]
+[ext_resource type="Texture2D" uid="uid://bo3nedpbl0o04" path="res://sprites/mob.png" id="2_nokgg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_epg4t"]
+radius = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
+size = Vector2(24, 24)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qi2p4"]
+radius = 200.0
+
+[node name="Mob" type="CharacterBody2D" unique_id=1341150150 groups=["enemy"]]
+texture_filter = 1
+motion_mode = 1
+script = ExtResource("1_nokgg")
+powerOfHpRestoration = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1462799679]
+texture = ExtResource("2_nokgg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=656443659]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_epg4t")
+
+[node name="HitBox" type="Area2D" parent="." unique_id=569272496]
+linear_damp_space_override = 1
+linear_damp = 15.84
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1318553001]
+shape = SubResource("RectangleShape2D_4gyqm")
+
+[node name="Timer" type="Timer" parent="." unique_id=793809508]
+autostart = true
+
+[node name="WakeUpArea" type="Area2D" parent="." unique_id=46368685]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WakeUpArea" unique_id=1783292783]
+shape = SubResource("CircleShape2D_qi2p4")
+debug_color = Color(0.91, 0, 0.7280002, 0.0627451)
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="HitBox" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="WakeUpArea" to="." method="_on_wake_up_area_body_entered"]
