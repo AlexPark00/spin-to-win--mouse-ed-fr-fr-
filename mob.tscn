@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://bxdbba4iay6ps"]
 
-[ext_resource type="Script" uid="uid://c6nadxqds5kwq" path="res://mob.gd" id="1_nokgg"]
+[ext_resource type="Script" uid="uid://c6nadxqds5kwq" path="res://scripts/mob.gd" id="1_nokgg"]
 [ext_resource type="Texture2D" uid="uid://bo3nedpbl0o04" path="res://sprites/mob.png" id="2_nokgg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_epg4t"]
 radius = 8.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
-size = Vector2(24, 24)
+size = Vector2(24, 18)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qi2p4"]
 radius = 200.0
@@ -30,6 +30,7 @@ linear_damp_space_override = 1
 linear_damp = 15.84
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1318553001]
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_4gyqm")
 
 [node name="Timer" type="Timer" parent="." unique_id=793809508]

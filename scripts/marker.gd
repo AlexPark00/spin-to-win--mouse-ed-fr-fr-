@@ -3,6 +3,7 @@ extends Sprite2D
 @export var on_screen_offset: Vector2 = Vector2(0.5, -5.0)
 @export var screen_margin: float = 4.0
 @export var smoothing_speed: float = 8.0
+@export var make_invisible: bool = true
 
 var camera_node: Camera2D
 
@@ -26,9 +27,13 @@ func _process(delta: float) -> void:
 	var target_display_rotation: float
 	
 	if screen_inset_rectangle.has_point(screen_coordinates):
+		if make_invisible:
+			visible = false;
 		target_display_position = target_global_position + on_screen_offset
 		target_display_rotation = 0.0
 	else:
+		if make_invisible:
+			visible = true;
 		var clamped_x = clamp(screen_coordinates.x, screen_margin, viewport_dimensions.x - screen_margin)
 		var clamped_y = clamp(screen_coordinates.y, screen_margin, viewport_dimensions.y - screen_margin)
 		var clamped_screen_coords: Vector2 = Vector2(clamped_x, clamped_y)

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://buv83h076vkpa"]
+
+[ext_resource type="Texture2D" uid="uid://bq70ssr4slous" path="res://sprites/shurikent.png" id="1_foqx7"]
+[ext_resource type="Script" uid="uid://dcaq8xpkg7kid" path="res://scripts/shuriken.gd" id="1_tu8ef"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tu8ef"]
+size = Vector2(5, 5)
+
+[node name="Shuriken" type="Node2D" unique_id=1715871837]
+script = ExtResource("1_tu8ef")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1874161335]
+texture_filter = 1
+texture = ExtResource("1_foqx7")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=2083744356]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=2039667992]
+shape = SubResource("RectangleShape2D_tu8ef")
+
+[connection signal="body_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_body_entered"]

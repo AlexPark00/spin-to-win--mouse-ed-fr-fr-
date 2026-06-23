@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dl7eqdumxia13"]
 
-[ext_resource type="Script" uid="uid://br21g7v4ygruu" path="res://soul.gd" id="1_nq8dp"]
+[ext_resource type="Script" uid="uid://br21g7v4ygruu" path="res://scripts/soul.gd" id="1_nq8dp"]
 [ext_resource type="Texture2D" uid="uid://femcx3vl53fp" path="res://sprites/soul.png" id="2_nmvwf"]
 
 [node name="Soul" type="Node2D" unique_id=630082404]
