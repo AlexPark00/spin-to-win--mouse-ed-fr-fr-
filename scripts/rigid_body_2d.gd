@@ -110,7 +110,7 @@ func get_max_hp() -> float:
 	return maxHP
 
 func teleport_to(point:Vector2):
-	position = point;
+	global_position = point;
 
 func reset_hp() -> void:
 	hp = maxHP;

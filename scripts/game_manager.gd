@@ -8,7 +8,7 @@ var player;
 var camera;
 var transition;
 @onready var pauseMenu = $"../CanvasLayer/Control/Pause";
-@onready var levelUpMenu = $"../CanvasLayer/Control/LevelUp"
+var levelUpMenu;
 @onready var musicPlayer = $"../MusicPlayer"
 @onready var mainTheme = preload("res://duckinja main theme (demo 1).mp3");
 @onready var elevatorMusic = preload("res://duckinja_elevator music(demo 1).mp3");
@@ -18,6 +18,7 @@ func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player");
 	camera = get_tree().get_first_node_in_group("camera");
 	transition = get_tree().get_first_node_in_group("transition");
+	levelUpMenu = get_tree().get_first_node_in_group("level_up_menu");
 	_load_area(startingArea);
 
 func _next_area() -> void:
@@ -25,7 +26,7 @@ func _next_area() -> void:
 	transition.toggle_transition();
 	get_tree().paused = true;
 	await transition.done_transitioning;
-	_load_area(currentArea);
+	await _load_area(currentArea);
 	transition.toggle_transition();
 
 func _load_area(area:int) -> void:
@@ -36,9 +37,10 @@ func _load_area(area:int) -> void:
 	var scene:PackedScene = load(fullPath);
 	var instance:Node = scene.instantiate();
 	areaContainer.add_child(instance);
+	await get_tree().process_frame;
 	var playerSpawnpoint:Node2D = get_tree().get_first_node_in_group("spawn_point");
-	player.teleport_to(playerSpawnpoint.position);
-	camera.teleport_to(playerSpawnpoint.position);
+	player.teleport_to(playerSpawnpoint.global_position);
+	camera.teleport_to(playerSpawnpoint.global_position);
 	get_tree().paused = false;
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -59,4 +61,3 @@ func finish_level() -> void:
 	musicPlayer.stream = elevatorMusic;
 	musicPlayer.play();
 	levelUpMenu.visible = true;
-	levelUpMenu.add_points(1);

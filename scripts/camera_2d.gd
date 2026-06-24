@@ -13,4 +13,4 @@ func _process(delta):
 	position = position.lerp(target.position, weight);
 
 func teleport_to(point:Vector2):
-	position = point;
+	global_position = point;

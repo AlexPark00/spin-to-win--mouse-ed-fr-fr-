@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bty33mg3rgssx"]
+
+[ext_resource type="Texture2D" uid="uid://jhmb12m6u17n" path="res://sprites/LevelUpPoint.png" id="1_3s45o"]
+[ext_resource type="Script" uid="uid://cxl5iwa0rii03" path="res://scripts/level_up_point.gd" id="1_wyfw3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wyfw3"]
+radius = 8.0
+
+[node name="LevelUpPoint" type="Node2D" unique_id=1745768616]
+script = ExtResource("1_wyfw3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=721924251]
+texture_filter = 1
+texture = ExtResource("1_3s45o")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1410636680]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=195505387]
+shape = SubResource("CircleShape2D_wyfw3")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
