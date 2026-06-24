@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cnvfhfjb8hntk"]
 
-[ext_resource type="Script" uid="uid://h8yswfe6lsen" path="res://scripts/enemy_shuriken.gd" id="1_4jyqe"]
+[ext_resource type="Script" uid="uid://h8yswfe6lsen" path="res://scripts/enemy_poison.gd" id="1_4jyqe"]
 [ext_resource type="Texture2D" uid="uid://cfm538o1tkqwe" path="res://sprites/marker.png" id="2_tp44y"]
 [ext_resource type="Script" uid="uid://cvrg85x0o0uj0" path="res://scripts/marker.gd" id="3_axajk"]
 [ext_resource type="Texture2D" uid="uid://bfdmqhup3ux38" path="res://sprites/enemy_poison.png" id="4_4jyqe"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bebfj3kft6wpf"]
 
-[ext_resource type="Script" uid="uid://h8yswfe6lsen" path="res://scripts/enemy_shuriken.gd" id="1_757ui"]
+[ext_resource type="Script" uid="uid://bj3xjdpe2g6c8" path="res://scripts/enemy_shuriken.gd" id="1_757ui"]
 [ext_resource type="Texture2D" uid="uid://cfm538o1tkqwe" path="res://sprites/marker.png" id="2_tdbj4"]
 [ext_resource type="Script" uid="uid://cvrg85x0o0uj0" path="res://scripts/marker.gd" id="3_t5gkp"]
 [ext_resource type="Texture2D" uid="uid://dflkgaij21tvo" path="res://sprites/enemy_shuriken.png" id="4_757ui"]
@@ -19,7 +19,6 @@ radius = 200.0
 texture_filter = 1
 motion_mode = 1
 script = ExtResource("1_757ui")
-maxHP = 75.0
 
 [node name="Marker" type="Sprite2D" parent="." unique_id=1697046159]
 texture_filter = 1

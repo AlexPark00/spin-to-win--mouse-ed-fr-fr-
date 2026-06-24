@@ -1,7 +1,7 @@
 extends Node
 
 var areaPath = "res://areas/";
-var startingArea = 3;
+var startingArea = 2;
 var currentArea = startingArea;
 var areaContainer;
 var player;
@@ -50,6 +50,7 @@ func restart_current_area() -> void:
 	_load_area(currentArea);
 	transition.toggle_transition();
 	player.reset_hp();
+	player.poisonedTimeRemaining = 0;
 	collectedPoints = 0;
 
 func finish_level() -> void:
