@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://ba52lxwdc845d"]
+
+[ext_resource type="Script" uid="uid://d28kxgjuia48n" path="res://scripts/poison_bottle.gd" id="1_eschc"]
+[ext_resource type="Texture2D" uid="uid://b3tghfh005531" path="res://sprites/poison_bottle.png" id="2_mqaop"]
+
+[node name="PoisonBottle" type="Node2D" unique_id=792092057]
+z_index = 1
+script = ExtResource("1_eschc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1443737846]
+texture_filter = 1
+texture = ExtResource("2_mqaop")

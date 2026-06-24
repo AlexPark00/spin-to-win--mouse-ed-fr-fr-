@@ -1,7 +1,7 @@
 extends Node
 
 var areaPath = "res://areas/";
-var startingArea = 1;
+var startingArea = 3;
 var currentArea = startingArea;
 var areaContainer;
 var player;
@@ -12,7 +12,8 @@ var levelUpMenu;
 @onready var musicPlayer = $"../MusicPlayer"
 @onready var mainTheme = preload("res://duckinja main theme (demo 1).mp3");
 @onready var elevatorMusic = preload("res://duckinja_elevator music(demo 1).mp3");
-# Called when the node enters the scene tree for the first time.
+var collectedPoints:int = 0;
+
 func _ready() -> void:
 	areaContainer = get_tree().get_first_node_in_group("area_container");
 	player = get_tree().get_first_node_in_group("player");
@@ -42,10 +43,6 @@ func _load_area(area:int) -> void:
 	player.teleport_to(playerSpawnpoint.global_position);
 	camera.teleport_to(playerSpawnpoint.global_position);
 	get_tree().paused = false;
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func restart_current_area() -> void:
 	transition.toggle_transition();
@@ -53,10 +50,13 @@ func restart_current_area() -> void:
 	_load_area(currentArea);
 	transition.toggle_transition();
 	player.reset_hp();
+	collectedPoints = 0;
 
 func finish_level() -> void:
 	musicPlayer.stop();
 	await _next_area();
+	levelUpMenu.add_points(collectedPoints);
+	collectedPoints = 0;
 	get_tree().paused = true;
 	musicPlayer.stream = elevatorMusic;
 	musicPlayer.play();

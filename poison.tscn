@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dtc1q2j8q4vhh"]
+
+[ext_resource type="Script" uid="uid://ddt647t2iybr4" path="res://scripts/poison.gd" id="1_gh8aa"]
+[ext_resource type="Texture2D" uid="uid://dog4yriudhcq" path="res://sprites/poison.png" id="2_hqv03"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_pjqmx"]
+points = PackedVector2Array(10, 8, 5, 9, -5, 7, -9, 4, -6, 0, 5, -1, 10, 1)
+
+[node name="Poison" type="Node2D" unique_id=729556117]
+script = ExtResource("1_gh8aa")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=278743914]
+texture_filter = 1
+position = Vector2(0, -4)
+texture = ExtResource("2_hqv03")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=401701328]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=178327891]
+shape = SubResource("ConvexPolygonShape2D_pjqmx")
+
+[connection signal="body_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Sprite2D/Area2D" to="." method="_on_area_2d_body_exited"]

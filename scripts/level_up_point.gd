@@ -1,13 +1,13 @@
 extends Node2D
 
 var player;
-var levelUpMenu;
+var gameManager;
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player");
-	levelUpMenu = get_tree().get_first_node_in_group("level_up_menu");
+	gameManager = get_tree().get_first_node_in_group("game_manager");
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body == player:
-		levelUpMenu.add_points(1);
+	if body == player and !self.is_queued_for_deletion():
+		gameManager.collectedPoints += 1;
 		queue_free();

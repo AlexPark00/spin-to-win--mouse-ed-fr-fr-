@@ -3,6 +3,7 @@
 [ext_resource type="TileSet" uid="uid://c2lan0qwkle68" path="res://tilemap/new_tile_set.tres" id="1_kfvlx"]
 [ext_resource type="PackedScene" uid="uid://dqawqu4c6pmsd" path="res://enemy.tscn" id="2_crvkk"]
 [ext_resource type="PackedScene" uid="uid://bxdbba4iay6ps" path="res://mob.tscn" id="3_fbewg"]
+[ext_resource type="PackedScene" uid="uid://cnvfhfjb8hntk" path="res://enemy_poison.tscn" id="4_crvkk"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1prma"]
 vertices = PackedVector2Array(1594, 130, 1838, 134, 1838, 158, 1814, 158, 562, 154, 1406, 130, 2074, -130, 1862, -130, 1066, -134, 1066, -226, 1286, -374, 1450, -374, 1718, -278, 1862, 134, 1594, -130, 3298, 62, 2894, 62, 2338, 34, 3158, 34, 2894, 178, 3298, 178, 3514, 206, 2146, 206, 2146, 182, 1858, -278, 1858, -370, 2270, -442, 1406, -130, 898, 130, 710, 130, 562, -34, 682, -110, 3878, 34, 3878, 254, 3538.0078, 254, 3538.0313, 230, 3806, 34, 4646, -206, 4646, -154, 4358, -154.03906, 4358, -206, 2726, -158, 3158, -158, 3754, -178, 3634, -178, 3634, -350, 3926, -250, 4358, -106, 4162, -106, 4162, -250, 4358, -350, 3926, -178, 3806, -178, 3754, 34, 3514, 230, 2122, 182, 2122, 158, 2270, 34, 2098, 158, 2098, 134, 2074, 134, 898, -130, 926, -134, 1814, 182, 1790, 182, 1790, 206, 106, 206, 470, 154, 106, -302, 130, -302, 326, -110, 130, -350, 326, -350, 470, -34, 710, -130, 682, -350, 898, -350, 926, -226, 898, -470, 1286, -470, 2338, -442, 2726, -470, 1450, -470, 1718, -370)
@@ -21,7 +22,7 @@ func play_animation() -> void:
 [sub_resource type="CircleShape2D" id="CircleShape2D_1prma"]
 radius = 31.016125
 
-[node name="Area 1" type="Node2D" unique_id=512324975]
+[node name="Area 3" type="Node2D" unique_id=512324975]
 texture_filter = 1
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=1133284366]
@@ -255,3 +256,6 @@ position = Vector2(267, 24)
 
 [node name="Mob5" parent="Mob/splatoon8" unique_id=523081782 instance=ExtResource("3_fbewg")]
 position = Vector2(291, 24)
+
+[node name="EnemyPoison" parent="." unique_id=1427856345 instance=ExtResource("4_crvkk")]
+position = Vector2(264, -144)

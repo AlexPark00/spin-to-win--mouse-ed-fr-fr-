@@ -4,7 +4,7 @@ var isActive:bool = false;
 @export var speed:float = 400;
 @export var maxHP:float = 100;
 @export var dps:float = 10;
-@export var powerOfHpRestoration:float = 10;
+@export var powerOfHpRestoration:float = 20;
 var player:RigidBody2D;
 var target = position;
 var hp:float;
@@ -63,7 +63,7 @@ func is_active() -> bool:
 	return isActive;
 
 func _kms():
-	if randi()%100+1 <= 50:
+	if randi()%100+1 <= 20:
 		_spawn_heal();
 	_spawn_soul();
 	self.queue_free();
