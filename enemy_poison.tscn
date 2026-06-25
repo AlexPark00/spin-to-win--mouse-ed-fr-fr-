@@ -1,10 +1,10 @@
-[gd_scene format=3 uid="uid://bebfj3kft6wpf"]
+[gd_scene format=3 uid="uid://cnvfhfjb8hntk"]
 
-[ext_resource type="Script" uid="uid://bj3xjdpe2g6c8" path="res://scripts/enemy_shuriken.gd" id="1_757ui"]
-[ext_resource type="Texture2D" uid="uid://cfm538o1tkqwe" path="res://sprites/marker.png" id="2_tdbj4"]
-[ext_resource type="Script" uid="uid://cvrg85x0o0uj0" path="res://scripts/marker.gd" id="3_t5gkp"]
-[ext_resource type="Texture2D" uid="uid://dflkgaij21tvo" path="res://sprites/enemy_shuriken.png" id="4_757ui"]
-[ext_resource type="PackedScene" uid="uid://ocu5l35r1h5y" path="res://healthbar.tscn" id="5_xi73h"]
+[ext_resource type="Script" uid="uid://h8yswfe6lsen" path="res://scripts/enemy_poison.gd" id="1_4jyqe"]
+[ext_resource type="Texture2D" uid="uid://cfm538o1tkqwe" path="res://sprites/marker.png" id="2_tp44y"]
+[ext_resource type="Script" uid="uid://cvrg85x0o0uj0" path="res://scripts/marker.gd" id="3_axajk"]
+[ext_resource type="Texture2D" uid="uid://bfdmqhup3ux38" path="res://sprites/enemy_poison.png" id="4_4jyqe"]
+[ext_resource type="PackedScene" uid="uid://ocu5l35r1h5y" path="res://healthbar.tscn" id="5_le53w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_epg4t"]
 radius = 9.0
@@ -15,20 +15,21 @@ size = Vector2(24, 24)
 [sub_resource type="CircleShape2D" id="CircleShape2D_qi2p4"]
 radius = 200.0
 
-[node name="EnemyShuriken" type="CharacterBody2D" unique_id=1341150150 groups=["enemy"]]
+[node name="EnemyPoison" type="CharacterBody2D" unique_id=1341150150 groups=["enemy"]]
 texture_filter = 1
 motion_mode = 1
-script = ExtResource("1_757ui")
+script = ExtResource("1_4jyqe")
+maxHP = 50.0
 
 [node name="Marker" type="Sprite2D" parent="." unique_id=1697046159]
 texture_filter = 1
-texture = ExtResource("2_tdbj4")
-script = ExtResource("3_t5gkp")
+texture = ExtResource("2_tp44y")
+script = ExtResource("3_axajk")
 screen_margin = 16.0
 smoothing_speed = 100.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1462799679]
-texture = ExtResource("4_757ui")
+texture = ExtResource("4_4jyqe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=656443659]
 position = Vector2(0, 3)
@@ -45,7 +46,7 @@ shape = SubResource("RectangleShape2D_4gyqm")
 wait_time = 2.0
 autostart = true
 
-[node name="Healthbar" parent="." unique_id=1521435540 node_paths=PackedStringArray("target") instance=ExtResource("5_xi73h")]
+[node name="Healthbar" parent="." unique_id=1521435540 node_paths=PackedStringArray("target") instance=ExtResource("5_le53w")]
 z_index = 1
 offset_left = -19.0
 offset_top = -16.0

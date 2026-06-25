@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://bvoedy6niva4k" path="res://main_theme.tres" id="1_06t4h"]
 [ext_resource type="Script" uid="uid://dgk4duu4e60o0" path="res://scripts/button_container.gd" id="2_7vrkn"]
-[ext_resource type="Shader" uid="uid://31cnn745tnt7" path="res://transition.gdshader" id="3_jix8l"]
+[ext_resource type="Shader" uid="uid://31cnn745tnt7" path="res://shaders/transition.gdshader" id="3_jix8l"]
 [ext_resource type="PackedScene" uid="uid://caxvvysnilkwn" path="res://audio.tscn" id="3_nlkkf"]
 [ext_resource type="Script" uid="uid://c5x8dkylj7dvr" path="res://scripts/transition.gd" id="4_glbon"]
 [ext_resource type="AudioStream" uid="uid://dvqtg1vw0wb7v" path="res://duckinja_elevator music(demo 1).mp3" id="5_glbon"]

@@ -3,7 +3,8 @@ extends RigidBody2D
 @export var originalMaxHP:float = 100;
 var maxHP:float = originalMaxHP;
 var hp:float;
-@export var speed:int = 20;
+@export var originalSpeed:float = 13;
+var speed:float = originalSpeed;
 @export var maxSpeed:int = 600;
 @export var dashMaxSpeed: int = 1000;
 @export var originalDamage:float = 10;
@@ -29,6 +30,11 @@ var dash_tween:Tween;
 @onready var holdTimeLabel = $"../CanvasLayer/Control/HoldTimeLabel";
 var holdTime:float = 5;
 var elapsedHoldTime:float = 0;
+
+@export var poisonedTime:float = 10;
+@export var poisonSlowdown:float = 0.66;
+var poisonedTimeRemaining:float = 0;
+@onready var poisonedBar = $PoisonBar;
 
 func _ready() -> void:
 	hp = maxHP;
@@ -63,7 +69,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		duckSprite.flip_h = true;
 	
-	if Input.is_action_just_pressed("dash") and dashCooldownRemaining <= 0:
+	if Input.is_action_just_pressed("dash") and dashCooldownRemaining <= 0 and poisonedTimeRemaining <= 0:
 		if dash_tween and dash_tween.is_running():
 			dash_tween.kill()
 		dashCooldownBar.modulate = Color(1.0, 1.0, 1.0, 1.0);
@@ -74,10 +80,18 @@ func _physics_process(delta: float) -> void:
 		dash_tween.tween_property(dashCooldownBar, "value", 0.0, dashTime);
 		dash_tween.tween_property(dashCooldownBar, "value", 100.0, dashCooldown-0.1);
 		dash_tween.tween_property(dashCooldownBar, "modulate", Color(1.0, 1.0, 1.0, 0.0), 0.5);
-		
 	
+	if poisonedTimeRemaining > 0:
+		poisonedBar.value = (poisonedTimeRemaining/poisonedTime)*poisonedBar.max_value;
+		poisonedBar.modulate.a = 1.0;
+		speed = originalSpeed*poisonSlowdown;
+	else:
+		poisonedBar.modulate.a = lerpf(poisonedBar.modulate.a, 0.0, 8 * delta); # 8 * delta is 0.5s for some reason and I'm not even sure it IS 0.5s 
+		speed = originalSpeed;
+		
 	dashCooldownRemaining -= delta;
 	dashTimeRemaining -= delta;
+	poisonedTimeRemaining -= delta;
 	
 	# clamping speed at max speed
 	if linear_velocity.length() > maxSpeed and dashTimeRemaining <= 0:
@@ -138,3 +152,6 @@ func level_start_animation() -> void:
 	var cameraTween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO);
 	labelTween.tween_property(levelLabel, "modulate", Color(1.0, 1.0, 1.0, 0.0), 1.5);
 	cameraTween.tween_property(camera, "zoom", Vector2(1.0, 1.0), 1.5)
+
+func make_poisoned() -> void:
+	poisonedTimeRemaining = poisonedTime;

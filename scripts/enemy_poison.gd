@@ -3,8 +3,7 @@ extends CharacterBody2D
 var isActive:bool = false;
 @export var speed:float = 400;
 @export var maxHP:float = 100;
-##actual shuriken damage is half that because shuriken animation is 2s long
-@export var dps:float = 8;
+@export var poisonDPS:float = 8;
 @export var powerOfHpRestoration:float = 20;
 var player:RigidBody2D;
 var target = position;
@@ -14,7 +13,7 @@ var is_player_inside:bool = false;
 @onready var timer: NavigationAgent2D = $NavigationAgent2D;
 var heal_node = preload("res://heal.tscn");
 var soul_node = preload("res://soul.tscn");
-var shuriken_node = preload("res://shuriken.tscn");
+var bottle_node = preload("res://poison_bottle.tscn");
 @onready var sprite:Sprite2D = $Sprite2D;
 var fullWhiteShaderMaterial = preload("res://shaders/full_white.tres");
 
@@ -33,6 +32,7 @@ func _ready():
 func actor_setup():
 	# Wait for the first physics frame so the NavigationServer can sync.
 	await get_tree().physics_frame
+
 	# Now that the navigation map is no longer empty, set the movement target.
 	set_movement_target(player.global_position)
 
@@ -51,7 +51,7 @@ func _physics_process(delta):
 	else:
 		sprite.flip_h = true;
 	velocity = current_agent_position.direction_to(next_path_position) * speed
-	if global_position.distance_to(playerPos) > 100:
+	if global_position.distance_to(playerPos) > 150:
 		move_and_slide()
 	
 func get_hp() -> float:
@@ -92,10 +92,9 @@ func _spawn_soul():
 	get_parent().add_child(node);
 
 func _on_timer_timeout() -> void:
-	if isActive:
-		var node:Node2D = shuriken_node.instantiate();
+	if isActive and global_position.distance_to(player.global_position) < 200:
+		var node:Node2D = bottle_node.instantiate();
 		node.global_position = global_position;
-		node.damage = dps/2; #because shuriken animation is 2s long
 		get_parent().add_child(node);
 
 func _on_wake_up_area_body_entered(body: Node2D) -> void:
