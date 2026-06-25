@@ -36,6 +36,8 @@ var elapsedHoldTime:float = 0;
 var poisonedTimeRemaining:float = 0;
 @onready var poisonedBar = $PoisonBar;
 
+@onready var theEndMenu = $"../CanvasLayer/Control/TheEnd";
+
 func _ready() -> void:
 	hp = maxHP;
 	gameManager = get_tree().get_first_node_in_group("game_manager");
@@ -110,6 +112,9 @@ func _physics_process(delta: float) -> void:
 	holdTimeLabel.text = str(round((holdTime - elapsedHoldTime)*10)/10);
 
 func deal_damage(damage:float):
+	if gameManager.dying:
+		return;
+	theEndMenu.damageTaken += damage;
 	hp -= damage;
 	if hp <= 0:
 		gameManager.restart_current_area();

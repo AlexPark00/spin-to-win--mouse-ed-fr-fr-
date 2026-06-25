@@ -3,17 +3,18 @@ extends CharacterBody2D
 var isActive:bool = false;
 @export var speed:float = 400;
 @export var maxHP:float = 100;
-@export var dps:float = 10;
+@export var dps:float = 0;
 @export var powerOfHpRestoration:float = 20;
 var player:RigidBody2D;
 var target = position;
 var hp:float;
 var is_player_inside:bool = false;
+var isInsideGoodArea:bool = false;
+@onready var statusRect = $StatusColorRect;
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D;
 var heal_node = preload("res://heal.tscn");
 var soul_node = preload("res://soul.tscn");
 @onready var sprite:Sprite2D = $Sprite2D;
-@onready var statusRect:ColorRect = $StatusColorRect;
 var fullWhiteShaderMaterial = preload("res://shaders/full_white.tres");
 
 func _ready():
@@ -39,7 +40,7 @@ func set_movement_target(movement_target: Vector2):
 	navigation_agent.target_position = movement_target
 
 func _physics_process(delta):
-	if isInsideGoodArea and !isInsideBadArea:
+	if isInsideGoodArea and !is_player_inside:
 		statusRect.color = Color(0.0, 1.0, 0.0, 1.0);
 	else: 
 		statusRect.color = Color(1.0, 0.0, 0.0, 1.0);
@@ -54,9 +55,15 @@ func _physics_process(delta):
 		sprite.flip_h = true;
 	velocity = current_agent_position.direction_to(next_path_position) * speed
 	move_and_slide()
+	
+func get_hp() -> float:
+	return hp
+
+func get_max_hp() -> float:
+	return maxHP
 
 func deal_damage(damage:int) -> void:
-	pass
+	_damaged_effect();
 
 func _damaged_effect() -> void:
 	sprite.material = fullWhiteShaderMaterial;
@@ -66,28 +73,43 @@ func _damaged_effect() -> void:
 func is_active() -> bool:
 	return isActive;
 
+func _kms():
+	if randi()%100+1 <= 20:
+		_spawn_heal();
+	_spawn_soul();
+	self.queue_free();
+
+func _spawn_heal():
+	var node:Node2D = heal_node.instantiate() as Node2D;
+	node.global_position = global_position;
+	node.powerOfHpRestoration = powerOfHpRestoration;
+	get_parent().add_child(node);
+
+func _spawn_soul():
+	var node:Node2D = soul_node.instantiate() as Node2D;
+	node.global_position = global_position;
+	get_parent().add_child(node);
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body == player:
+		is_player_inside = true;
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body == player:
+		is_player_inside = false;
+
+func _on_timer_timeout() -> void:
+	if is_player_inside:
+		player.deal_damage(dps);
+
 func _on_wake_up_area_body_entered(body: Node2D) -> void:
 	if body == player:
 		isActive = true;
-
-var isInsideGoodArea:bool = false;
-var isInsideBadArea:bool = false;
 
 func _on_good_distance_area_body_entered(body: Node2D) -> void:
 	if body == player:
 		isInsideGoodArea = true;
 
-
 func _on_good_distance_area_body_exited(body: Node2D) -> void:
 	if body == player:
 		isInsideGoodArea = false;
-
-
-func _on_hit_box_body_entered(body: Node2D) -> void:
-	if body == player:
-		isInsideBadArea = true;
-
-
-func _on_hit_box_body_exited(body: Node2D) -> void:
-	if body == player:
-		isInsideBadArea = false;

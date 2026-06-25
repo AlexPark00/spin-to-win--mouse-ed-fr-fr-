@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://btrqr6n1f6x35"]
 
-[ext_resource type="Script" uid="uid://dn80022d2m7wa" path="res://stalker.gd" id="1_nxyld"]
+[ext_resource type="Script" uid="uid://dn80022d2m7wa" path="res://scripts/stalker.gd" id="1_nxyld"]
 [ext_resource type="Texture2D" uid="uid://cd7gai1wqv6c2" path="res://sprites/enemy.png" id="4_rg8nh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_epg4t"]
@@ -19,6 +19,10 @@ radius = 46.043457
 texture_filter = 1
 motion_mode = 1
 script = ExtResource("1_nxyld")
+speed = null
+maxHP = null
+dps = null
+powerOfHpRestoration = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1462799679]
 texture = ExtResource("4_rg8nh")
