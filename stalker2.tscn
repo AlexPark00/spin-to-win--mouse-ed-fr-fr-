@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://btrqr6n1f6x35"]
+
+[ext_resource type="Script" uid="uid://dn80022d2m7wa" path="res://stalker.gd" id="1_nxyld"]
+[ext_resource type="Texture2D" uid="uid://cd7gai1wqv6c2" path="res://sprites/enemy.png" id="4_rg8nh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_epg4t"]
+radius = 9.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
+size = Vector2(24, 24)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qi2p4"]
+radius = 200.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fqyq1"]
+radius = 46.043457
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1341150150 groups=["enemy"]]
+texture_filter = 1
+motion_mode = 1
+script = ExtResource("1_nxyld")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1462799679]
+texture = ExtResource("4_rg8nh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=656443659]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_epg4t")
+
+[node name="HitBox" type="Area2D" parent="." unique_id=569272496]
+linear_damp_space_override = 1
+linear_damp = 15.84
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1318553001]
+shape = SubResource("RectangleShape2D_4gyqm")
+
+[node name="Timer" type="Timer" parent="." unique_id=793809508]
+autostart = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=906316993]
+
+[node name="WakeUpArea" type="Area2D" parent="." unique_id=46368685]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WakeUpArea" unique_id=1783292783]
+shape = SubResource("CircleShape2D_qi2p4")
+debug_color = Color(0.91270345, 9.587646e-05, 0.72405934, 0.41960785)
+
+[node name="GoodDistanceArea" type="Area2D" parent="." unique_id=264321398]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoodDistanceArea" unique_id=122342421]
+shape = SubResource("CircleShape2D_fqyq1")
+debug_color = Color(0, 0.6512401, 0.053905897, 0.41960785)
+
+[node name="StatusColorRect" type="ColorRect" parent="." unique_id=215917560]
+modulate = Color(1, 1, 1, 0.5176471)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 1)
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="HitBox" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="WakeUpArea" to="." method="_on_wake_up_area_body_entered"]
+[connection signal="body_entered" from="GoodDistanceArea" to="." method="_on_good_distance_area_body_entered"]
+[connection signal="body_exited" from="GoodDistanceArea" to="." method="_on_good_distance_area_body_exited"]

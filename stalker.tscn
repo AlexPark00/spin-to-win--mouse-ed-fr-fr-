@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://bcox0kwu850k5"]
+
+[ext_resource type="Texture2D" uid="uid://cd7gai1wqv6c2" path="res://sprites/enemy.png" id="1_jp7eu"]
+[ext_resource type="Script" uid="uid://d2tanqlxjp4yh" path="res://scripts/stalker.gd" id="1_x1jp0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x1jp0"]
+radius = 9.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0lbdj"]
+size = Vector2(24, 24)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vdvwx"]
+radius = 120.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fomxu"]
+radius = 46.043457
+
+[node name="Stalker" type="CharacterBody2D" unique_id=285187301]
+texture_filter = 1
+script = ExtResource("1_x1jp0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1320963529]
+texture = ExtResource("1_jp7eu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2114362045]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_x1jp0")
+
+[node name="HitBox" type="Area2D" parent="." unique_id=1179309726]
+linear_damp_space_override = 1
+linear_damp = 15.84
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=271976286]
+shape = SubResource("RectangleShape2D_0lbdj")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=786663982]
+
+[node name="WakeUpArea" type="Area2D" parent="." unique_id=1772120327]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WakeUpArea" unique_id=1408991932]
+shape = SubResource("CircleShape2D_vdvwx")
+debug_color = Color(0.91270345, 9.587646e-05, 0.72405934, 0.41960785)
+
+[node name="GoodDistanceArea" type="Area2D" parent="." unique_id=314398891]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoodDistanceArea" unique_id=1872075118]
+shape = SubResource("CircleShape2D_fomxu")
+debug_color = Color(0, 0.6512401, 0.053905897, 0.41960785)
+
+[node name="StatusColorRect" type="ColorRect" parent="." unique_id=230519674]
+modulate = Color(1, 1, 1, 0.5176471)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 1)
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
+[connection signal="body_exited" from="HitBox" to="." method="_on_hit_box_body_exited"]
+[connection signal="body_entered" from="WakeUpArea" to="." method="_on_wake_up_area_body_entered"]
+[connection signal="body_entered" from="GoodDistanceArea" to="." method="_on_good_distance_area_body_entered"]
+[connection signal="body_exited" from="GoodDistanceArea" to="." method="_on_good_distance_area_body_exited"]
