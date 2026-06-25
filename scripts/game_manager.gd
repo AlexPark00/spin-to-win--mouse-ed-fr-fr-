@@ -1,7 +1,7 @@
 extends Node
 
 var areaPath = "res://areas/";
-var startingArea = 1;
+var startingArea = 3;
 var currentArea = startingArea;
 var areaContainer;
 var player;

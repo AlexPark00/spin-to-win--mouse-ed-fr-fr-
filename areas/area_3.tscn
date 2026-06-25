@@ -259,10 +259,9 @@ position = Vector2(3948, -72)
 position = Vector2(3996, -72)
 
 [node name="Mob" type="Node2D" parent="." unique_id=953314945]
-position = Vector2(1140, -120)
 
 [node name="splatoon" type="Node2D" parent="Mob" unique_id=1575176091]
-position = Vector2(-924, 444)
+position = Vector2(216, 324)
 
 [node name="Mob" parent="Mob/splatoon" unique_id=611801782 instance=ExtResource("3_fbewg")]
 position = Vector2(255, 0)
@@ -280,7 +279,7 @@ position = Vector2(267, 24)
 position = Vector2(291, 24)
 
 [node name="splatoon2" type="Node2D" parent="Mob" unique_id=1587659795]
-position = Vector2(-564, 132)
+position = Vector2(576, 12)
 
 [node name="Mob" parent="Mob/splatoon2" unique_id=21927821 instance=ExtResource("3_fbewg")]
 position = Vector2(255, 0)
@@ -298,7 +297,7 @@ position = Vector2(267, 24)
 position = Vector2(291, 24)
 
 [node name="splatoon3" type="Node2D" parent="Mob" unique_id=1456266007]
-position = Vector2(-372, 156)
+position = Vector2(768, 36)
 
 [node name="Mob" parent="Mob/splatoon3" unique_id=675314611 instance=ExtResource("3_fbewg")]
 position = Vector2(255, 0)
@@ -316,7 +315,7 @@ position = Vector2(267, 24)
 position = Vector2(291, 24)
 
 [node name="splatoon4" type="Node2D" parent="Mob" unique_id=2050293537]
-position = Vector2(168, 108)
+position = Vector2(1308, -12)
 
 [node name="Mob" parent="Mob/splatoon4" unique_id=1516926605 instance=ExtResource("3_fbewg")]
 position = Vector2(255, 0)
@@ -334,7 +333,7 @@ position = Vector2(267, 24)
 position = Vector2(291, 24)
 
 [node name="splatoon5" type="Node2D" parent="Mob" unique_id=1985865216]
-position = Vector2(744, 108)
+position = Vector2(1884, -12)
 
 [node name="Mob" parent="Mob/splatoon5" unique_id=1758889003 instance=ExtResource("3_fbewg")]
 position = Vector2(255, 0)
@@ -352,7 +351,7 @@ position = Vector2(267, 24)
 position = Vector2(291, 24)
 
 [node name="splatoon6" type="Node2D" parent="Mob" unique_id=168958351]
-position = Vector2(1380, 108)
+position = Vector2(2520, -12)
 
 [node name="Mob" parent="Mob/splatoon6" unique_id=690862026 instance=ExtResource("3_fbewg")]
 position = Vector2(255, 0)
@@ -370,7 +369,7 @@ position = Vector2(267, 24)
 position = Vector2(291, 24)
 
 [node name="splatoon7" type="Node2D" parent="Mob" unique_id=379907213]
-position = Vector2(1392, 384)
+position = Vector2(2532, 264)
 
 [node name="Mob" parent="Mob/splatoon7" unique_id=473073082 instance=ExtResource("3_fbewg")]
 position = Vector2(255, 0)
@@ -388,7 +387,7 @@ position = Vector2(267, 24)
 position = Vector2(291, 24)
 
 [node name="splatoon8" type="Node2D" parent="Mob" unique_id=1240964659]
-position = Vector2(2040, 672)
+position = Vector2(3180, 552)
 
 [node name="Mob" parent="Mob/splatoon8" unique_id=721883476 instance=ExtResource("3_fbewg")]
 position = Vector2(255, 0)
@@ -406,7 +405,7 @@ position = Vector2(267, 24)
 position = Vector2(291, 24)
 
 [node name="splatoon9" type="Node2D" parent="Mob" unique_id=560156047]
-position = Vector2(2364, 96)
+position = Vector2(3504, -24)
 
 [node name="Mob" parent="Mob/splatoon9" unique_id=393593901 instance=ExtResource("3_fbewg")]
 position = Vector2(255, 0)
@@ -424,7 +423,7 @@ position = Vector2(267, 24)
 position = Vector2(291, 24)
 
 [node name="splatoon10" type="Node2D" parent="Mob" unique_id=1262644672]
-position = Vector2(3252, 96)
+position = Vector2(4392, -24)
 
 [node name="Mob" parent="Mob/splatoon10" unique_id=544289702 instance=ExtResource("3_fbewg")]
 position = Vector2(255, 0)
@@ -442,7 +441,7 @@ position = Vector2(267, 24)
 position = Vector2(291, 24)
 
 [node name="splatoon11" type="Node2D" parent="Mob" unique_id=143712375]
-position = Vector2(3540, 96)
+position = Vector2(4680, -24)
 
 [node name="Mob" parent="Mob/splatoon11" unique_id=777536738 instance=ExtResource("3_fbewg")]
 position = Vector2(255, 0)
@@ -460,7 +459,7 @@ position = Vector2(267, 24)
 position = Vector2(291, 24)
 
 [node name="splatoon12" type="Node2D" parent="Mob" unique_id=97406147]
-position = Vector2(600, 432)
+position = Vector2(1740, 312)
 
 [node name="Mob" parent="Mob/splatoon12" unique_id=698585198 instance=ExtResource("3_fbewg")]
 position = Vector2(255, 0)
@@ -478,7 +477,7 @@ position = Vector2(267, 24)
 position = Vector2(291, 24)
 
 [node name="splatoon13" type="Node2D" parent="Mob" unique_id=643162952]
-position = Vector2(-204, 396)
+position = Vector2(936, 276)
 
 [node name="Mob" parent="Mob/splatoon13" unique_id=1101784385 instance=ExtResource("3_fbewg")]
 position = Vector2(255, 0)
@@ -496,7 +495,7 @@ position = Vector2(267, 24)
 position = Vector2(291, 24)
 
 [node name="splatoon14" type="Node2D" parent="Mob" unique_id=2042001826]
-position = Vector2(288, 624)
+position = Vector2(1428, 504)
 
 [node name="Mob" parent="Mob/splatoon14" unique_id=1801106882 instance=ExtResource("3_fbewg")]
 position = Vector2(255, 0)
@@ -514,7 +513,7 @@ position = Vector2(267, 24)
 position = Vector2(291, 24)
 
 [node name="splatoon15" type="Node2D" parent="Mob" unique_id=628783079]
-position = Vector2(288, 624)
+position = Vector2(1428, 504)
 
 [node name="Mob" parent="Mob/splatoon15" unique_id=1952445446 instance=ExtResource("3_fbewg")]
 position = Vector2(255, 0)

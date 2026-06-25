@@ -12,6 +12,8 @@ var is_player_inside:bool = false;
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D;
 var heal_node = preload("res://heal.tscn");
 var soul_node = preload("res://soul.tscn");
+@onready var sprite:Sprite2D = $Sprite2D;
+var fullWhiteShaderMaterial = preload("res://shaders/full_white.tres");
 
 func _ready():
 	# These values need to be adjusted for the actor's speed
@@ -42,9 +44,9 @@ func _physics_process(delta):
 	var current_agent_position: Vector2 = global_position;
 	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
 	if abs(rad_to_deg(get_angle_to(next_path_position))) > 90:
-		$Sprite2D.flip_h = false;
+		sprite.flip_h = false;
 	else:
-		$Sprite2D.flip_h = true;
+		sprite.flip_h = true;
 	velocity = current_agent_position.direction_to(next_path_position) * speed
 	move_and_slide()
 	
@@ -54,10 +56,16 @@ func get_hp() -> float:
 func get_max_hp() -> float:
 	return maxHP
 
-func deal_damage(damage:int):
+func deal_damage(damage:int) -> void:
 	hp -= damage;
+	_damaged_effect();
 	if hp <= 0:
 		_kms();
+
+func _damaged_effect() -> void:
+	sprite.material = fullWhiteShaderMaterial;
+	await get_tree().create_timer(0.05).timeout;
+	sprite.material = null;
 
 func is_active() -> bool:
 	return isActive;

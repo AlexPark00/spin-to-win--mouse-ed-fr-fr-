@@ -23,7 +23,7 @@ func play_animation() -> void:
 [sub_resource type="CircleShape2D" id="CircleShape2D_1prma"]
 radius = 31.016125
 
-[node name="Area 1" type="Node2D" unique_id=512324975]
+[node name="Area 2" type="Node2D" unique_id=512324975]
 texture_filter = 1
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=1133284366]

@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://d1hcuatrlq1gd" path="res://sprites/stamina_bar_progress.png" id="7_w48qg"]
 [ext_resource type="Theme" uid="uid://bvoedy6niva4k" path="res://main_theme.tres" id="8_5vw27"]
 [ext_resource type="Script" uid="uid://vti45e2u4mvw" path="res://scripts/pause.gd" id="8_kek77"]
-[ext_resource type="Shader" uid="uid://31cnn745tnt7" path="res://transition.gdshader" id="9_dg77c"]
+[ext_resource type="Shader" uid="uid://31cnn745tnt7" path="res://shaders/transition.gdshader" id="9_dg77c"]
 [ext_resource type="Texture2D" uid="uid://c4d6cpxqii6dl" path="res://sprites/stamina_bar_poison.png" id="9_getpj"]
 [ext_resource type="Script" uid="uid://doc74qsv676ob" path="res://scripts/level_label.gd" id="10_cegan"]
 [ext_resource type="Script" uid="uid://c5x8dkylj7dvr" path="res://scripts/transition.gd" id="10_ycdy4"]
