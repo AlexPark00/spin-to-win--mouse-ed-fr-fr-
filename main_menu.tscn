@@ -206,6 +206,9 @@ autoplay = true
 bus = &"Music"
 parameters/looping = true
 
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=665563395]
+bus = &"SFX"
+
 [connection signal="pressed" from="ColorRect/ButtonContainer/Play" to="ColorRect/ButtonContainer" method="_on_play_pressed"]
 [connection signal="pressed" from="ColorRect/ButtonContainer/Settings" to="ColorRect/ButtonContainer" method="_on_settings_pressed"]
 [connection signal="pressed" from="ColorRect/ButtonContainer/Tutorial" to="ColorRect/ButtonContainer" method="_on_tutorial_pressed"]

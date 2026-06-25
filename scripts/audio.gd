@@ -6,6 +6,8 @@ extends VBoxContainer
 var masterSliderIndex;
 var musicSliderIndex;
 var sfxSliderIndex;
+@onready var sfxPlayer = $AudioMenuSfxPlayer;
+var sfxScream = preload("res://sfx/hud_hum scream.ogg");
 
 func _ready() -> void:
 	masterSliderIndex = AudioServer.get_bus_index("Master");
@@ -19,10 +21,16 @@ func _ready() -> void:
 func _on_master_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_linear(masterSliderIndex, value);
 
-
 func _on_music_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_linear(musicSliderIndex, value);
 
-
 func _on_sfx_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_linear(sfxSliderIndex, value);
+
+
+func _on_sfx_slider_gui_input(event: InputEvent) -> void:
+	if event.is_action_pressed("lmb"):
+		sfxPlayer.stream = sfxScream;
+		sfxPlayer.play();
+	elif event.is_action_released("lmb"):
+		sfxPlayer.stop();
