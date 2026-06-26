@@ -5,14 +5,12 @@
 [ext_resource type="AudioStream" uid="uid://d2ipaqtju6cur" path="res://duckinja main theme(demo 3).ogg" id="1_ryguw"]
 [ext_resource type="Texture2D" uid="uid://cpyyd2j7ji814" path="res://sprites/katana.png" id="3_272bh"]
 [ext_resource type="Script" uid="uid://c8ym1oe8whovg" path="res://scripts/sword.gd" id="3_lquwl"]
-[ext_resource type="Texture2D" uid="uid://crvea8ay43xwh" path="res://sprites/duck/dash.png" id="6_0odxb"]
+[ext_resource type="Texture2D" uid="uid://b38nycvgtikvq" path="res://sprites/duck.png" id="5_4c57u"]
 [ext_resource type="Texture2D" uid="uid://jc2wbqb38v7r" path="res://sprites/stamina_bar_under.png" id="6_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://ocu5l35r1h5y" path="res://healthbar.tscn" id="7_5vw27"]
 [ext_resource type="Script" uid="uid://pfb3jnissrd5" path="res://scripts/camera_2d.gd" id="7_272bh"]
-[ext_resource type="Texture2D" uid="uid://cr4av284cr1b7" path="res://sprites/duck/idle.png" id="7_lswn8"]
 [ext_resource type="Texture2D" uid="uid://d1hcuatrlq1gd" path="res://sprites/stamina_bar_progress.png" id="7_w48qg"]
 [ext_resource type="Theme" uid="uid://bvoedy6niva4k" path="res://main_theme.tres" id="8_5vw27"]
-[ext_resource type="Texture2D" uid="uid://ep104ltqioyo" path="res://sprites/duck/walk.png" id="8_a6jrf"]
 [ext_resource type="Script" uid="uid://vti45e2u4mvw" path="res://scripts/pause.gd" id="8_kek77"]
 [ext_resource type="Shader" uid="uid://31cnn745tnt7" path="res://shaders/transition.gdshader" id="9_dg77c"]
 [ext_resource type="Texture2D" uid="uid://c4d6cpxqii6dl" path="res://sprites/stamina_bar_poison.png" id="9_getpj"]
@@ -20,7 +18,6 @@
 [ext_resource type="Script" uid="uid://c5x8dkylj7dvr" path="res://scripts/transition.gd" id="10_ycdy4"]
 [ext_resource type="FontFile" uid="uid://dswwfv4asta2f" path="res://fonts/KiwiSoda.ttf" id="11_2cqfq"]
 [ext_resource type="Script" uid="uid://b4kjbilmt6cq" path="res://scripts/level_up.gd" id="11_yaehf"]
-[ext_resource type="AudioStream" uid="uid://d3rpo8n8up6br" path="res://sfx/duck_dash hum.ogg" id="12_d13ii"]
 [ext_resource type="Texture2D" uid="uid://dkj7rlx5dve7s" path="res://sprites/arrow1.png" id="12_yaehf"]
 [ext_resource type="Texture2D" uid="uid://cu6lvh0cw7di0" path="res://sprites/arrow2.png" id="13_074og"]
 [ext_resource type="Script" uid="uid://beeiqlk3aaeun" path="res://scripts/the_end.gd" id="18_ryguw"]
@@ -28,115 +25,6 @@
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_074og"]
 points = PackedVector2Array(7.83667, -7.7837524, -6.4544067, 15.470581, -5.7148438, 23.923584, 5.3623047, 4.4994507, 7.5636597, -2.7912292)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xuqvo"]
-atlas = ExtResource("6_0odxb")
-region = Rect2(0, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qsp4k"]
-atlas = ExtResource("6_0odxb")
-region = Rect2(24, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kq58d"]
-atlas = ExtResource("6_0odxb")
-region = Rect2(48, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_seu75"]
-atlas = ExtResource("6_0odxb")
-region = Rect2(72, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_htxhm"]
-atlas = ExtResource("7_lswn8")
-region = Rect2(0, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jq2sk"]
-atlas = ExtResource("7_lswn8")
-region = Rect2(24, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4k2k6"]
-atlas = ExtResource("7_lswn8")
-region = Rect2(48, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0rl1p"]
-atlas = ExtResource("7_lswn8")
-region = Rect2(72, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ok6jj"]
-atlas = ExtResource("8_a6jrf")
-region = Rect2(0, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_facbu"]
-atlas = ExtResource("8_a6jrf")
-region = Rect2(24, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b1qrp"]
-atlas = ExtResource("8_a6jrf")
-region = Rect2(48, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_come4"]
-atlas = ExtResource("8_a6jrf")
-region = Rect2(72, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h8e4i"]
-atlas = ExtResource("8_a6jrf")
-region = Rect2(96, 0, 24, 24)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_4lmeg"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xuqvo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qsp4k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kq58d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_seu75")
-}],
-"loop": false,
-"name": &"Dash",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_htxhm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jq2sk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4k2k6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0rl1p")
-}],
-"loop": true,
-"name": &"Idle",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ok6jj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_facbu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b1qrp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_come4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h8e4i")
-}],
-"loop": true,
-"name": &"Walk",
-"speed": 30.0
-}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1bvp3"]
 radius = 12.083045
@@ -219,10 +107,8 @@ debug_color = Color(0.22658393, 0.6385784, 0, 0.41960785)
 [node name="SwordSfxPlayer" type="AudioStreamPlayer" parent="Player/Sword/InnerOrigin/Sword" unique_id=961529247]
 bus = &"SFX"
 
-[node name="Duck" type="AnimatedSprite2D" parent="Player" unique_id=1783331757]
-sprite_frames = SubResource("SpriteFrames_4lmeg")
-animation = &"Walk"
-autoplay = "Idle"
+[node name="Duck" type="Sprite2D" parent="Player" unique_id=1156921978]
+texture = ExtResource("5_4c57u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=736746963]
 shape = SubResource("CircleShape2D_1bvp3")
@@ -282,10 +168,6 @@ script = ExtResource("10_cegan")
 bus = &"SFX"
 
 [node name="HurtSFXPlayer" type="AudioStreamPlayer" parent="Player" unique_id=25849153]
-bus = &"SFX"
-
-[node name="HumSFXPlayer" type="AudioStreamPlayer" parent="Player" unique_id=1165284312]
-stream = ExtResource("12_d13ii")
 bus = &"SFX"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1838958213 node_paths=PackedStringArray("target") groups=["camera"]]

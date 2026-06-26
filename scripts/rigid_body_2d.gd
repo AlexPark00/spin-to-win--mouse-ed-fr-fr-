@@ -28,7 +28,7 @@ var dash_tween:Tween;
 
 # hold time for transitioning to next area in seconds
 @onready var holdTimeLabel = $"../CanvasLayer/Control/HoldTimeLabel";
-var holdTime:float = 5;
+var holdTime:float = 3;
 var elapsedHoldTime:float = 0;
 
 @export var poisonedTime:float = 10;
@@ -37,14 +37,15 @@ var poisonedTimeRemaining:float = 0;
 @onready var poisonedBar = $PoisonBar;
 
 @onready var theEndMenu = $"../CanvasLayer/Control/TheEnd";
-@onready var sfxPlayer = $PlayerSFXPlayer;
+@onready var dashPoisonSfxPlayer = $DashAndPoisonSFXPlayer;
+@onready var humSfxPlayer = $HumSFXPlayer;
+@onready var hurtSfxPlayer = $HurtSFXPlayer;
 var dashSFX = preload("res://sfx/duck_dash.ogg");
-var deathSFX = preload("res://sfx/duck_dying.ogg");
+var dashHumSFX = preload("res://sfx/duck_dash hum.ogg");
 var hurtSFX = preload("res://sfx/duck_hurt.ogg");
-var katanaHitSFX = preload("res://sfx/duck_katana hitting.ogg");
-var katanaHumSFX = preload("res://sfx/duck_katana hum.ogg");
 var poisonSFX = preload("res://sfx/duck_poison.ogg");
-var stepSFX = preload("res://sfx/duck_step.ogg");
+
+var fullWhiteShaderMaterial = preload("res://shaders/full_white.tres");
 
 func _ready() -> void:
 	hp = maxHP;
@@ -57,6 +58,10 @@ var dashDirection:Vector2 = Vector2.RIGHT;
 func _physics_process(delta: float) -> void:
 	rotation = 0;
 	var input_direction = Input.get_vector("left", "right", "up", "down");
+	if input_direction == Vector2.ZERO:
+		duckSprite.play("Idle");
+	else:
+		duckSprite.play("Walk");
 	if input_direction != Vector2.ZERO:
 		lastDirection = input_direction;
 	if dashTimeRemaining <= 0:
@@ -80,8 +85,10 @@ func _physics_process(delta: float) -> void:
 		duckSprite.flip_h = true;
 	
 	if Input.is_action_just_pressed("dash") and dashCooldownRemaining <= 0 and poisonedTimeRemaining <= 0:
-		sfxPlayer.stream = dashSFX;
-		sfxPlayer.play();
+		duckSprite.play("Dash");
+		dashPoisonSfxPlayer.stream = dashSFX;
+		dashPoisonSfxPlayer.pitch_scale = 1.0;
+		dashPoisonSfxPlayer.play();
 		if dash_tween and dash_tween.is_running():
 			dash_tween.kill()
 		dashCooldownBar.modulate = Color(1.0, 1.0, 1.0, 1.0);
@@ -89,8 +96,14 @@ func _physics_process(delta: float) -> void:
 		dashDirection = lastDirection;
 		dashTimeRemaining = dashTime;
 		dash_tween = get_tree().create_tween();
+		humSfxPlayer.pitch_scale = 0.5;
 		dash_tween.tween_property(dashCooldownBar, "value", 0.0, dashTime);
+		dash_tween.parallel().tween_property(camera, "zoom", Vector2(1.15, 1.15), 0.08).set_trans(Tween.TRANS_CUBIC);
+		dash_tween.tween_callback(humSfxPlayer.play);
 		dash_tween.tween_property(dashCooldownBar, "value", 100.0, dashCooldown-0.1);
+		dash_tween.parallel().tween_property(humSfxPlayer, "pitch_scale", 2.0, dashCooldown-0.1);
+		dash_tween.parallel().tween_property(camera, "zoom", Vector2(1.0, 1.0), 0.08).set_trans(Tween.TRANS_CUBIC);
+		dash_tween.tween_callback(humSfxPlayer.stop);
 		dash_tween.tween_property(dashCooldownBar, "modulate", Color(1.0, 1.0, 1.0, 0.0), 0.5);
 	
 	if poisonedTimeRemaining > 0:
@@ -125,9 +138,18 @@ func deal_damage(damage:float):
 	if gameManager.dying:
 		return;
 	theEndMenu.damageTaken += damage;
+	_damaged_effect();
 	hp -= damage;
 	if hp <= 0:
 		gameManager.restart_current_area();
+	hurtSfxPlayer.stream = hurtSFX;
+	hurtSfxPlayer.pitch_scale = randf_range(0.9, 1.1);
+	hurtSfxPlayer.play();
+
+func _damaged_effect() -> void:
+	duckSprite.material = fullWhiteShaderMaterial;
+	await get_tree().create_timer(0.05).timeout;
+	duckSprite.material = null;
 
 func get_damage() -> float:
 	return damage;
@@ -170,9 +192,11 @@ func level_start_animation() -> void:
 
 func make_poisoned() -> void:
 	if poisonedTimeRemaining <= 0:
-		sfxPlayer.stream = poisonSFX;
-		sfxPlayer.play();
-	elif !sfxPlayer.playing:
-		sfxPlayer.stream = poisonSFX;
-		sfxPlayer.play(0.1);
+		dashPoisonSfxPlayer.stream = poisonSFX;
+		dashPoisonSfxPlayer.pitch_scale = 1.0;
+		dashPoisonSfxPlayer.play();
+	elif !dashPoisonSfxPlayer.playing:
+		dashPoisonSfxPlayer.stream = poisonSFX;
+		dashPoisonSfxPlayer.pitch_scale = randf_range(0.9, 1.1);
+		dashPoisonSfxPlayer.play(0.1);
 	poisonedTimeRemaining = poisonedTime;
