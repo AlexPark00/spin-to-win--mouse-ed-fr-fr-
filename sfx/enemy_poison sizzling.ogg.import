@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bqi4fgpfm8oql"
+path="res://.godot/imported/enemy_poison sizzling.ogg-a824a1c6020cc9601f714377998b22de.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/enemy_poison sizzling.ogg"
+dest_files=["res://.godot/imported/enemy_poison sizzling.ogg-a824a1c6020cc9601f714377998b22de.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

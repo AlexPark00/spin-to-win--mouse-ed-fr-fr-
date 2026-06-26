@@ -24,8 +24,8 @@ extends Control
 var gameManager
 var transition
 var player
-@onready var mainTheme = preload("res://duckinja main theme (demo 1).mp3");
-@onready var elevatorMusic = preload("res://duckinja_elevator music(demo 1).mp3");
+@onready var mainTheme = preload("res://duckinja main theme(demo 3).ogg");
+@onready var elevatorMusic = preload("res://duckinja elevator demo 2.ogg");
 
 var totalUpgradePoints:int = 0;
 var freeUpgradePoints:int = 0;
@@ -99,6 +99,8 @@ func _on_damage_pressed() -> void:
 		freeUpgradePoints -= 1;
 		damageCurrLvl += 1;
 
+func get_total_upgrade_points() -> int:
+	return totalUpgradePoints;
 
 func _apply_upgrades() -> void:
 	player.maxHP = player.originalMaxHP + maxHpUpgradePower * maxHpCurrLvl;

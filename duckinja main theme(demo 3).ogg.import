@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d2ipaqtju6cur"
+path="res://.godot/imported/duckinja main theme(demo 3).ogg-58e2fd86af1f184e0cad4788107162c5.oggvorbisstr"
+
+[deps]
+
+source_file="res://duckinja main theme(demo 3).ogg"
+dest_files=["res://.godot/imported/duckinja main theme(demo 3).ogg-58e2fd86af1f184e0cad4788107162c5.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=27.0
+bpm=0.0
+beat_count=0
+bar_beats=4

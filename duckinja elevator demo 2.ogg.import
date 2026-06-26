@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ibdpsfbdvtvu"
+path="res://.godot/imported/duckinja elevator demo 2.ogg-fac2f6f2d8369e5b54c0b646e6b5bbe9.oggvorbisstr"
+
+[deps]
+
+source_file="res://duckinja elevator demo 2.ogg"
+dest_files=["res://.godot/imported/duckinja elevator demo 2.ogg-fac2f6f2d8369e5b54c0b646e6b5bbe9.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=2.5
+bpm=0.0
+beat_count=0
+bar_beats=4

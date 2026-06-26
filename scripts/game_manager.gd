@@ -1,17 +1,20 @@
 extends Node
 
 var areaPath = "res://areas/";
-var startingArea = 1;
+var startingArea = 4;
+var finalArea = 5;
 var currentArea = startingArea;
 var areaContainer;
 var player;
 var camera;
 var transition;
 @onready var pauseMenu = $"../CanvasLayer/Control/Pause";
+@onready var theEndMenu = $"../CanvasLayer/Control/TheEnd";
 var levelUpMenu;
+var dying:bool = false;
 @onready var musicPlayer = $"../MusicPlayer"
-@onready var mainTheme = preload("res://duckinja main theme (demo 1).mp3");
-@onready var elevatorMusic = preload("res://duckinja_elevator music(demo 1).mp3");
+@onready var mainTheme = preload("res://duckinja main theme(demo 3).ogg");
+@onready var elevatorMusic = preload("res://duckinja elevator demo 2.ogg");
 var collectedPoints:int = 0;
 
 func _ready() -> void:
@@ -28,6 +31,8 @@ func _next_area() -> void:
 	get_tree().paused = true;
 	await transition.done_transitioning;
 	await _load_area(currentArea);
+	if currentArea == finalArea:
+		theEndMenu.enable_menu();
 	transition.toggle_transition();
 
 func _load_area(area:int) -> void:
@@ -45,6 +50,7 @@ func _load_area(area:int) -> void:
 	get_tree().paused = false;
 
 func restart_current_area() -> void:
+	dying = true;
 	transition.toggle_transition();
 	await transition.done_transitioning;
 	_load_area(currentArea);
@@ -52,12 +58,14 @@ func restart_current_area() -> void:
 	player.reset_hp();
 	player.poisonedTimeRemaining = 0;
 	collectedPoints = 0;
+	theEndMenu.timesDied += 1;
+	dying = false;
 
 func finish_level() -> void:
 	musicPlayer.stop();
-	await _next_area();
 	levelUpMenu.add_points(collectedPoints);
 	collectedPoints = 0;
+	await _next_area();
 	get_tree().paused = true;
 	musicPlayer.stream = elevatorMusic;
 	musicPlayer.play();
