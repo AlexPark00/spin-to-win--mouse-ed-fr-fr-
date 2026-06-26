@@ -142,7 +142,6 @@ offset_bottom = 65.0
 grow_vertical = 2
 
 [node name="Transition" type="ColorRect" parent="." unique_id=417152782 groups=["transition"]]
-visible = false
 material = SubResource("ShaderMaterial_nlkkf")
 layout_mode = 1
 anchors_preset = 15

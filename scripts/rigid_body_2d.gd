@@ -46,6 +46,7 @@ var hurtSFX = preload("res://sfx/duck_hurt.ogg");
 var poisonSFX = preload("res://sfx/duck_poison.ogg");
 
 var fullWhiteShaderMaterial = preload("res://shaders/full_white.tres");
+var greenHighlightShaderMaterial = preload("res://shaders/highlight.tres")
 
 func _ready() -> void:
 	hp = maxHP;
@@ -171,6 +172,9 @@ func heal_hp(amt:float) -> void:
 		reset_hp();
 	else:
 		hp += amt;
+	duckSprite.material = greenHighlightShaderMaterial;
+	await get_tree().create_timer(0.1).timeout;
+	duckSprite.material = null;
 
 func _on_collision_check_area_entered(area: Area2D) -> void:
 	if area.is_in_group("next_area_trigger"):
