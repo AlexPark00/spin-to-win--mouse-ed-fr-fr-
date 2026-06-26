@@ -159,6 +159,11 @@ theme = ExtResource("8_5vw27")
 text = "Level 1"
 script = ExtResource("10_cegan")
 
+[node name="AudioListener2D" type="AudioListener2D" parent="Player" unique_id=238579180]
+
+[node name="PlayerSFXPlayer" type="AudioStreamPlayer" parent="Player" unique_id=679077604]
+bus = &"SFX"
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1838958213 node_paths=PackedStringArray("target") groups=["camera"]]
 process_mode = 1
 script = ExtResource("7_272bh")

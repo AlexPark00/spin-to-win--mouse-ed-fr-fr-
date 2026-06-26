@@ -37,6 +37,14 @@ var poisonedTimeRemaining:float = 0;
 @onready var poisonedBar = $PoisonBar;
 
 @onready var theEndMenu = $"../CanvasLayer/Control/TheEnd";
+@onready var sfxPlayer = $PlayerSFXPlayer;
+var dashSFX = preload("res://sfx/duck_dash.ogg");
+var deathSFX = preload("res://sfx/duck_dying.ogg");
+var hurtSFX = preload("res://sfx/duck_hurt.ogg");
+var katanaHitSFX = preload("res://sfx/duck_katana hitting.ogg");
+var katanaHumSFX = preload("res://sfx/duck_katana hum.ogg");
+var poisonSFX = preload("res://sfx/duck_poison.ogg");
+var stepSFX = preload("res://sfx/duck_step.ogg");
 
 func _ready() -> void:
 	hp = maxHP;
@@ -72,6 +80,8 @@ func _physics_process(delta: float) -> void:
 		duckSprite.flip_h = true;
 	
 	if Input.is_action_just_pressed("dash") and dashCooldownRemaining <= 0 and poisonedTimeRemaining <= 0:
+		sfxPlayer.stream = dashSFX;
+		sfxPlayer.play();
 		if dash_tween and dash_tween.is_running():
 			dash_tween.kill()
 		dashCooldownBar.modulate = Color(1.0, 1.0, 1.0, 1.0);
@@ -159,4 +169,10 @@ func level_start_animation() -> void:
 	cameraTween.tween_property(camera, "zoom", Vector2(1.0, 1.0), 1.5)
 
 func make_poisoned() -> void:
+	if poisonedTimeRemaining <= 0:
+		sfxPlayer.stream = poisonSFX;
+		sfxPlayer.play();
+	elif !sfxPlayer.playing:
+		sfxPlayer.stream = poisonSFX;
+		sfxPlayer.play(0.1);
 	poisonedTimeRemaining = poisonedTime;
