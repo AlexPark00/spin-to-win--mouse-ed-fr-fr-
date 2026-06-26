@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dflkgaij21tvo"
-path="res://.godot/imported/enemy_shuriken.png-068c79289a8491e352bc064db0876707.ctex"
+uid="uid://bqo11rd6a6j6k"
+path="res://.godot/imported/poison_walk.png-7efc64084774743df08161e4fb710fde.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/enemy_shuriken.png"
-dest_files=["res://.godot/imported/enemy_shuriken.png-068c79289a8491e352bc064db0876707.ctex"]
+source_file="res://sprites/enemy_poison/poison_walk.png"
+dest_files=["res://.godot/imported/poison_walk.png-7efc64084774743df08161e4fb710fde.ctex"]
 
 [params]
 

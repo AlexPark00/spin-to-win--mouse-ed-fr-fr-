@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfdmqhup3ux38"
-path="res://.godot/imported/enemy_poison.png-1c965889dbab8c9916e76bd23f1ef1c6.ctex"
+uid="uid://5g0wayjyttbn"
+path="res://.godot/imported/enemy_stab.png-fe1c94e150be72abdd5cfafa2cabe2e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/enemy_poison.png"
-dest_files=["res://.godot/imported/enemy_poison.png-1c965889dbab8c9916e76bd23f1ef1c6.ctex"]
+source_file="res://sprites/enemy/enemy_stab.png"
+dest_files=["res://.godot/imported/enemy_stab.png-fe1c94e150be72abdd5cfafa2cabe2e9.ctex"]
 
 [params]
 

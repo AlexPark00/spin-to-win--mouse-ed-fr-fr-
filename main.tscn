@@ -685,14 +685,18 @@ layout_mode = 2
 alignment = 1
 
 [node name="Continue" type="Button" parent="CanvasLayer/Control/Pause/HBoxContainer/ButtonContainer" unique_id=781293348]
+texture_filter = 1
+custom_minimum_size = Vector2(73, 36)
 layout_mode = 2
 theme = ExtResource("8_5vw27")
-text = "Continue"
+text = "Play"
 
 [node name="MainMenu" type="Button" parent="CanvasLayer/Control/Pause/HBoxContainer/ButtonContainer" unique_id=1204725039]
+texture_filter = 1
+custom_minimum_size = Vector2(73, 36)
 layout_mode = 2
 theme = ExtResource("8_5vw27")
-text = "Main menu"
+text = "Menu"
 
 [node name="Audio" parent="CanvasLayer/Control/Pause/HBoxContainer" unique_id=1112668105 instance=ExtResource("20_82xsv")]
 custom_minimum_size = Vector2(156.5, 0)

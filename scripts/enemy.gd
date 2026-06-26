@@ -12,7 +12,7 @@ var is_player_inside:bool = false;
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D;
 var heal_node = preload("res://heal.tscn");
 var soul_node = preload("res://soul.tscn");
-@onready var sprite:Sprite2D = $Sprite2D;
+@onready var sprite:AnimatedSprite2D = $Sprite2D;
 var fullWhiteShaderMaterial = preload("res://shaders/full_white.tres");
 
 func _ready():
@@ -49,6 +49,8 @@ func _physics_process(delta):
 		sprite.flip_h = true;
 	velocity = current_agent_position.direction_to(next_path_position) * speed
 	move_and_slide()
+	if !sprite.is_playing():
+		sprite.play("Walk")
 	
 func get_hp() -> float:
 	return hp
@@ -96,9 +98,11 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		is_player_inside = false;
 
 func _on_timer_timeout() -> void:
-	$EnemyAttackSFXPlayer.play();
-	if is_player_inside:
-		player.deal_damage(dps);
+	if global_position.distance_to(player.global_position) < 100:
+		$EnemyAttackSFXPlayer.play();
+		sprite.play("Stab");
+		if is_player_inside:
+			player.deal_damage(dps);
 
 func _on_wake_up_area_body_entered(body: Node2D) -> void:
 	if body == player:

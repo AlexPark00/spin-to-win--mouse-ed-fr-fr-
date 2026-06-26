@@ -1,9 +1,79 @@
 [gd_scene format=3 uid="uid://dtc1q2j8q4vhh"]
 
 [ext_resource type="Script" uid="uid://ddt647t2iybr4" path="res://scripts/poison.gd" id="1_gh8aa"]
-[ext_resource type="Texture2D" uid="uid://dog4yriudhcq" path="res://sprites/poison.png" id="2_hqv03"]
+[ext_resource type="Texture2D" uid="uid://dwtf1eqoinu6h" path="res://sprites/enemy_poison/poison_sizzle.png" id="2_s7g7s"]
 [ext_resource type="AudioStream" uid="uid://dqhfequc0fofj" path="res://sfx/enemy_poison bottle shattering.ogg" id="3_hqv03"]
+[ext_resource type="Texture2D" uid="uid://suiqxu2uyhcm" path="res://sprites/enemy_poison/poison.png" id="3_txvim"]
 [ext_resource type="AudioStream" uid="uid://bqi4fgpfm8oql" path="res://sfx/enemy_poison sizzling.ogg" id="4_pjqmx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k83p6"]
+atlas = ExtResource("2_s7g7s")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k16lq"]
+atlas = ExtResource("2_s7g7s")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2lfu"]
+atlas = ExtResource("2_s7g7s")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrt10"]
+atlas = ExtResource("2_s7g7s")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3vnr"]
+atlas = ExtResource("3_txvim")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryj0k"]
+atlas = ExtResource("3_txvim")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4tp4"]
+atlas = ExtResource("3_txvim")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qr76o"]
+atlas = ExtResource("3_txvim")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2v8vo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k83p6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k16lq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2lfu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrt10")
+}],
+"loop": true,
+"name": &"Sizzle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3vnr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryj0k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4tp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qr76o")
+}],
+"loop": false,
+"name": &"Start",
+"speed": 10.0
+}]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_pjqmx"]
 points = PackedVector2Array(10, 8, 5, 9, -5, 7, -9, 4, -6, 0, 5, -1, 10, 1)
@@ -11,12 +81,17 @@ points = PackedVector2Array(10, 8, 5, 9, -5, 7, -9, 4, -6, 0, 5, -1, 10, 1)
 [node name="Poison" type="Node2D" unique_id=729556117]
 script = ExtResource("1_gh8aa")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=278743914]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=59472791]
 texture_filter = 1
 position = Vector2(0, -4)
-texture = ExtResource("2_hqv03")
+sprite_frames = SubResource("SpriteFrames_2v8vo")
+animation = &"Start"
+autoplay = "Start"
+frame = 3
+frame_progress = 1.0
 
 [node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=401701328]
+position = Vector2(0, 3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=178327891]
 shape = SubResource("ConvexPolygonShape2D_pjqmx")
