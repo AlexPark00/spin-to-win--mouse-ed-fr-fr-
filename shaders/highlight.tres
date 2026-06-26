@@ -1,11 +1,7 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://cl1b1agh3k4m3"]
 
-[ext_resource type="Shader" uid="uid://bl2ykpm1o5kvd" path="res://shaders/highlight.gdshader" id="1_tdt5j"]
+[ext_resource type="Shader" uid="uid://cbomu1qbk2xta" path="res://shaders/full_white.gdshader" id="1_tdt5j"]
 
 [resource]
 shader = ExtResource("1_tdt5j")
-shader_parameter/speed = 4.00000019
-shader_parameter/line_width = 0.20000000298023
 shader_parameter/line_color = Color(0, 1, 0.049999952, 1)
-shader_parameter/pause_duration = 0.0
-shader_parameter/offset = 1.0
