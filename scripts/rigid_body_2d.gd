@@ -28,7 +28,7 @@ var dash_tween:Tween;
 
 # hold time for transitioning to next area in seconds
 @onready var holdTimeLabel = $"../CanvasLayer/Control/HoldTimeLabel";
-var holdTime:float = 5;
+var holdTime:float = 3;
 var elapsedHoldTime:float = 0;
 
 @export var poisonedTime:float = 10;
@@ -45,6 +45,8 @@ var dashHumSFX = preload("res://sfx/duck_dash hum.ogg");
 var hurtSFX = preload("res://sfx/duck_hurt.ogg");
 var poisonSFX = preload("res://sfx/duck_poison.ogg");
 
+var fullWhiteShaderMaterial = preload("res://shaders/full_white.tres");
+
 func _ready() -> void:
 	hp = maxHP;
 	gameManager = get_tree().get_first_node_in_group("game_manager");
@@ -56,6 +58,10 @@ var dashDirection:Vector2 = Vector2.RIGHT;
 func _physics_process(delta: float) -> void:
 	rotation = 0;
 	var input_direction = Input.get_vector("left", "right", "up", "down");
+	if input_direction == Vector2.ZERO:
+		duckSprite.play("Idle");
+	else:
+		duckSprite.play("Walk");
 	if input_direction != Vector2.ZERO:
 		lastDirection = input_direction;
 	if dashTimeRemaining <= 0:
@@ -79,6 +85,7 @@ func _physics_process(delta: float) -> void:
 		duckSprite.flip_h = true;
 	
 	if Input.is_action_just_pressed("dash") and dashCooldownRemaining <= 0 and poisonedTimeRemaining <= 0:
+		duckSprite.play("Dash");
 		dashPoisonSfxPlayer.stream = dashSFX;
 		dashPoisonSfxPlayer.pitch_scale = 1.0;
 		dashPoisonSfxPlayer.play();
@@ -91,11 +98,11 @@ func _physics_process(delta: float) -> void:
 		dash_tween = get_tree().create_tween();
 		humSfxPlayer.pitch_scale = 0.5;
 		dash_tween.tween_property(dashCooldownBar, "value", 0.0, dashTime);
-		dash_tween.parallel().tween_property(camera, "zoom", Vector2(1.2, 1.2), 0.1).set_trans(Tween.TRANS_CUBIC);
+		dash_tween.parallel().tween_property(camera, "zoom", Vector2(1.15, 1.15), 0.08).set_trans(Tween.TRANS_CUBIC);
 		dash_tween.tween_callback(humSfxPlayer.play);
 		dash_tween.tween_property(dashCooldownBar, "value", 100.0, dashCooldown-0.1);
 		dash_tween.parallel().tween_property(humSfxPlayer, "pitch_scale", 2.0, dashCooldown-0.1);
-		dash_tween.parallel().tween_property(camera, "zoom", Vector2(1.0, 1.0), 0.1).set_trans(Tween.TRANS_CUBIC);
+		dash_tween.parallel().tween_property(camera, "zoom", Vector2(1.0, 1.0), 0.08).set_trans(Tween.TRANS_CUBIC);
 		dash_tween.tween_callback(humSfxPlayer.stop);
 		dash_tween.tween_property(dashCooldownBar, "modulate", Color(1.0, 1.0, 1.0, 0.0), 0.5);
 	
@@ -131,12 +138,18 @@ func deal_damage(damage:float):
 	if gameManager.dying:
 		return;
 	theEndMenu.damageTaken += damage;
+	_damaged_effect();
 	hp -= damage;
 	if hp <= 0:
 		gameManager.restart_current_area();
 	hurtSfxPlayer.stream = hurtSFX;
 	hurtSfxPlayer.pitch_scale = randf_range(0.9, 1.1);
 	hurtSfxPlayer.play();
+
+func _damaged_effect() -> void:
+	duckSprite.material = fullWhiteShaderMaterial;
+	await get_tree().create_timer(0.05).timeout;
+	duckSprite.material = null;
 
 func get_damage() -> float:
 	return damage;
