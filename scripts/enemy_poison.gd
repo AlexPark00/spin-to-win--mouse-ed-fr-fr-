@@ -14,7 +14,7 @@ var is_player_inside:bool = false;
 var heal_node = preload("res://heal.tscn");
 var soul_node = preload("res://soul.tscn");
 var bottle_node = preload("res://poison_bottle.tscn");
-@onready var sprite:Sprite2D = $Sprite2D;
+@onready var sprite:AnimatedSprite2D = $Sprite2D;
 var fullWhiteShaderMaterial = preload("res://shaders/full_white.tres");
 
 func _ready():
@@ -52,7 +52,11 @@ func _physics_process(delta):
 		sprite.flip_h = true;
 	velocity = current_agent_position.direction_to(next_path_position) * speed
 	if global_position.distance_to(playerPos) > 150:
+		sprite.play("Walk");
 		move_and_slide()
+	else:
+		if sprite.animation == "Walk":
+			sprite.stop();
 	
 func get_hp() -> float:
 	return hp
@@ -93,6 +97,8 @@ func _spawn_soul():
 
 func _on_timer_timeout() -> void:
 	if isActive and global_position.distance_to(player.global_position) < 200:
+		sprite.play("Throw");
+		await get_tree().create_timer(0.3).timeout;
 		var node:Node2D = bottle_node.instantiate();
 		node.global_position = global_position;
 		get_parent().add_child(node);

@@ -82,35 +82,31 @@ text = "I guess"
 
 [node name="ButtonContainer" type="VBoxContainer" parent="ColorRect" unique_id=503662660]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -36.5
+offset_left = 24.0
 offset_top = -40.0
-offset_right = 36.5
+offset_right = 97.0
 offset_bottom = 40.0
-grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_7vrkn")
 
 [node name="Play" type="Button" parent="ColorRect/ButtonContainer" unique_id=1620921335]
+texture_filter = 1
+custom_minimum_size = Vector2(73, 36)
 layout_mode = 2
 theme = ExtResource("1_06t4h")
 text = "Play"
 
-[node name="Settings" type="Button" parent="ColorRect/ButtonContainer" unique_id=1442782097]
+[node name="Options" type="Button" parent="ColorRect/ButtonContainer" unique_id=1442782097]
+texture_filter = 1
+custom_minimum_size = Vector2(73, 36)
 layout_mode = 2
 theme = ExtResource("1_06t4h")
-text = "Settings"
+text = "Options"
 
-[node name="Tutorial" type="Button" parent="ColorRect/ButtonContainer" unique_id=878440952]
-layout_mode = 2
-theme = ExtResource("1_06t4h")
-text = "Tutorial"
-
-[node name="Settings" type="ColorRect" parent="." unique_id=811274835]
+[node name="Options" type="ColorRect" parent="." unique_id=811274835]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -121,7 +117,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.3344, 0.51626676, 0.88, 1)
 
-[node name="Settings" type="Label" parent="Settings" unique_id=788078739]
+[node name="Options" type="Label" parent="Options" unique_id=788078739]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -134,9 +130,9 @@ grow_horizontal = 2
 theme = ExtResource("1_06t4h")
 theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 32
-text = "Settings"
+text = "Options"
 
-[node name="Audio" parent="Settings" unique_id=1112668105 instance=ExtResource("3_nlkkf")]
+[node name="Audio" parent="Options" unique_id=1112668105 instance=ExtResource("3_nlkkf")]
 layout_mode = 1
 anchors_preset = 8
 anchor_top = 0.5
@@ -144,49 +140,6 @@ anchor_bottom = 0.5
 offset_top = -65.0
 offset_bottom = 65.0
 grow_vertical = 2
-
-[node name="Tutorial" type="ColorRect" parent="." unique_id=400218518]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -283.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.7799733, 0.88, 0.3344, 1)
-
-[node name="Tutorial" type="Label" parent="Tutorial" unique_id=1003816719]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -57.0
-offset_top = 16.0
-offset_right = 57.0
-offset_bottom = 48.0
-grow_horizontal = 2
-theme = ExtResource("1_06t4h")
-theme_override_constants/outline_size = 12
-theme_override_font_sizes/font_size = 32
-text = "Tutorial"
-
-[node name="There is nothing to see yet" type="Label" parent="Tutorial" unique_id=1013936639]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -67.0
-offset_top = 132.0
-offset_right = 67.0
-offset_bottom = 234.0
-grow_horizontal = 2
-theme = ExtResource("1_06t4h")
-theme_override_constants/outline_size = 12
-theme_override_font_sizes/font_size = 32
-text = "There is
-nothing to
-see yet"
 
 [node name="Transition" type="ColorRect" parent="." unique_id=417152782 groups=["transition"]]
 material = SubResource("ShaderMaterial_nlkkf")
@@ -210,5 +163,4 @@ parameters/looping = true
 bus = &"SFX"
 
 [connection signal="pressed" from="ColorRect/ButtonContainer/Play" to="ColorRect/ButtonContainer" method="_on_play_pressed"]
-[connection signal="pressed" from="ColorRect/ButtonContainer/Settings" to="ColorRect/ButtonContainer" method="_on_settings_pressed"]
-[connection signal="pressed" from="ColorRect/ButtonContainer/Tutorial" to="ColorRect/ButtonContainer" method="_on_tutorial_pressed"]
+[connection signal="pressed" from="ColorRect/ButtonContainer/Options" to="ColorRect/ButtonContainer" method="_on_settings_pressed"]

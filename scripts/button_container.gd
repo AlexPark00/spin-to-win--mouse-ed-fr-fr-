@@ -26,9 +26,4 @@ func _on_play_pressed() -> void:
 func _on_settings_pressed() -> void:
 	sfxPlayer.stream = sfxClick;
 	sfxPlayer.play();
-	$"../../Settings".visible = !$"../../Settings".visible;
-
-func _on_tutorial_pressed() -> void:
-	sfxPlayer.stream = sfxClick;
-	sfxPlayer.play();
-	$"../../Tutorial".visible = !$"../../Tutorial".visible;
+	$"../../Options".visible = !$"../../Options".visible;

@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bw41nlyuebqa5"]
+
+[ext_resource type="Shader" uid="uid://cbomu1qbk2xta" path="res://shaders/full_white.gdshader" id="1_jcjq5"]
+
+[resource]
+shader = ExtResource("1_jcjq5")
+shader_parameter/line_color = Color(0.9098039, 0.75686276, 0.4392157, 1)

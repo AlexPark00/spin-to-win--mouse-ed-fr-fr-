@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b38nycvgtikvq"
-path="res://.godot/imported/duck.png-e0f90093fad80331842606a6a0ec0ec2.ctex"
+uid="uid://dwtf1eqoinu6h"
+path="res://.godot/imported/poison_sizzle.png-294c2706e6ec3a5ad46ae2536b12be96.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/duck.png"
-dest_files=["res://.godot/imported/duck.png-e0f90093fad80331842606a6a0ec0ec2.ctex"]
+source_file="res://sprites/enemy_poison/poison_sizzle.png"
+dest_files=["res://.godot/imported/poison_sizzle.png-294c2706e6ec3a5ad46ae2536b12be96.ctex"]
 
 [params]
 
